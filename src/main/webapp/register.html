@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>注册 · 食之有理 FlavorLogic</title>
+  <link rel="stylesheet" href="lib/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/app.css?v=3" />
+  <link rel="stylesheet" href="css/pages.css?v=3" />
+</head>
+<body>
+<div class="auth-page">
+  <section class="auth-visual">
+    <a class="brand" href="index.html" style="color:var(--dark-ink)">
+      <span class="brand-mark"></span>
+      <span>食之有理 <span style="font-weight:500;opacity:.72">FlavorLogic</span></span>
+    </a>
+    <div>
+      <h1>把「凭经验试错」<br />变成「有依据的配方推演」</h1>
+      <p>注册后可创建配方、发起风味分析、保存分析快照，并沉淀自己的研发记录。</p>
+      <ul class="auth-points">
+        <li>普通用户：管理自己的配方与分析记录</li>
+        <li>分析结果可回看、可打印、可提交试产反馈</li>
+        <li>密码使用 PBKDF2 加盐哈希存储，不保存明文</li>
+      </ul>
+    </div>
+    <div style="color:rgba(241,243,233,.5);font-size:11.5px">食之有理 FlavorLogic · 第一阶段 Web 课设版</div>
+  </section>
+
+  <section class="auth-form-side">
+    <div class="auth-card">
+      <h2>注册新账号</h2>
+      <p class="sub">注册后默认为普通用户，管理员权限由后台分配</p>
+      <form id="registerForm" novalidate>
+        <div class="field">
+          <label for="username">用户名 <span class="req">*</span></label>
+          <input type="text" id="username" name="username" autocomplete="username" placeholder="中文、字母、数字或下划线，2-20 位" />
+          <div class="error"></div>
+        </div>
+        <div class="field">
+          <label for="nickname">昵称 <span class="req">*</span></label>
+          <input type="text" id="nickname" name="nickname" placeholder="用于页面展示，不超过 50 个字符" />
+          <div class="error"></div>
+        </div>
+        <div class="field">
+          <label for="password">密码 <span class="req">*</span></label>
+          <input type="password" id="password" name="password" autocomplete="new-password" placeholder="6-20 位" />
+          <div class="error"></div>
+        </div>
+        <div class="field">
+          <label for="confirmPassword">确认密码 <span class="req">*</span></label>
+          <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" placeholder="再次输入密码" />
+          <div class="error"></div>
+        </div>
+        <button class="primary-btn" type="submit" id="registerBtn" style="width:100%;margin-top:18px">注册账号</button>
+      </form>
+      <div class="auth-foot">已有账号？<a href="login.html">直接登录</a></div>
+    </div>
+  </section>
+</div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.bundle.min.js"></script>
+<script src="js/common.js?v=4"></script>
+<script src="js/register.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Build and runtime output
+target/
+tomcat-runtime/
+
+# IDE and local machine files
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Logs and local runtime state
+*.log
+*.lck
+
+# Local database credentials
+src/main/resources/db.properties
+
+# Temporary extracted asset not used by the application
+src/main/webapp/assets/cookie-texture.jpg

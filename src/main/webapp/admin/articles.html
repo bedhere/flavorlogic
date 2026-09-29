@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文章管理 · 食之有理 FlavorLogic</title>
+  <link rel="stylesheet" href="../lib/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/app.css?v=3" />
+  <link rel="stylesheet" href="../css/pages.css?v=3" />
+</head>
+<body>
+<div id="app"></div>
+
+<!-- 文章新增 / 编辑弹窗（静态结构，避免动态拼接表单） -->
+<div class="modal fade" id="articleModal" tabindex="-1" aria-labelledby="articleModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="articleModalTitle" style="font-size:15px">新增文章</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+      </div>
+      <div class="modal-body">
+        <form id="articleForm" novalidate>
+          <input type="hidden" id="articleId" />
+          <div class="form-grid one">
+            <div class="field">
+              <label for="articleTitle">标题 <span class="req">*</span></label>
+              <input type="text" id="articleTitle" maxlength="200" placeholder="例如：减糖 30% 的复合甜味方案" autocomplete="off" />
+              <div class="error"></div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="articleCategory">分类</label>
+                <select id="articleCategory">
+                  <option value="">未分类</option>
+                </select>
+                <div class="error"></div>
+              </div>
+              <div class="field">
+                <label for="articleStatus">状态</label>
+                <select id="articleStatus">
+                  <option value="0">草稿（暂不公开）</option>
+                  <option value="1">发布（知识库可见）</option>
+                </select>
+                <div class="error"></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="articleSummary">摘要</label>
+              <textarea id="articleSummary" maxlength="500" placeholder="留空时由正文自动生成前 120 字摘要"></textarea>
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="articleContent">正文 <span class="req">*</span></label>
+              <textarea id="articleContent" style="min-height:220px" placeholder="支持纯文本或简单 HTML 片段"></textarea>
+              <div class="error"></div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="articleSourceName">来源名称</label>
+                <input type="text" id="articleSourceName" maxlength="100" placeholder="例如：中国食品报" autocomplete="off" />
+                <div class="error"></div>
+              </div>
+              <div class="field">
+                <label for="articleSourceUrl">原文地址</label>
+                <input type="text" id="articleSourceUrl" maxlength="500" placeholder="https://…（重复会被拦截）" autocomplete="off" />
+                <div class="error"></div>
+              </div>
+              <div class="field span-2">
+                <label for="articleCoverUrl">封面地址</label>
+                <input type="text" id="articleCoverUrl" maxlength="500" placeholder="../assets/knowledge-lab.jpg 或外部图片地址" autocomplete="off" />
+                <div class="error"></div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="secondary-btn" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="primary-btn" id="articleSaveBtn">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/bootstrap.bundle.min.js"></script>
+<script src="../js/common.js?v=4"></script>
+<script src="../js/admin-articles.js?v=3"></script>
+</body>
+</html>

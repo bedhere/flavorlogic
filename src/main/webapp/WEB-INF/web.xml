@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>食之有理 FlavorLogic</display-name>
+
+    <!-- ============================================================
+         过滤器：顺序即执行顺序，因此显式写在 web.xml 中
+         1. 编码过滤器      -> 统一 UTF-8
+         2. 登录过滤器      -> 页面跳转登录页，接口返回 401
+         3. 管理员过滤器    -> 拦截 /admin/* 与 /api/admin/*
+         ============================================================ -->
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>com.flavorlogic.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.flavorlogic.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.flavorlogic.filter.AdminFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/api/admin/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <!-- ============================================================
+         静态资源缓存策略（Tomcat 自带的 ExpiresFilter）
+         背景：Tomcat 默认不为静态文件发送 Cache-Control，浏览器会按
+         “启发式新鲜度”缓存数小时，导致改了 CSS/JS 之后普通刷新也不生效。
+         这里让 css/js 每次都回源校验（未变返回 304，已变立即生效），
+         图片等不常变的资源保留 30 天缓存。
+         ============================================================ -->
+    <filter>
+        <filter-name>ExpiresFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+        <init-param>
+            <param-name>ExpiresByType text/css</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType text/javascript</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType application/javascript</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType text/html</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType image/jpeg</param-name>
+            <param-value>access plus 30 days</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType image/png</param-name>
+            <param-value>access plus 30 days</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ExpiresByType image/svg+xml</param-name>
+            <param-value>access plus 30 days</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ExpiresFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <!-- 会话：30 分钟无操作失效 -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error.html</location>
+    </error-page>
+
+    <!-- 静态资源：禁止直接访问 WEB-INF 由容器保证，此处声明常见 MIME -->
+    <mime-mapping>
+        <extension>webp</extension>
+        <mime-type>image/webp</mime-type>
+    </mime-mapping>
+</web-app>

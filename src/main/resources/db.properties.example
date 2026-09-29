@@ -1,0 +1,6 @@
+# Copy this file to db.properties for local development,
+# or set FLAVORLOGIC_DB_URL / FLAVORLOGIC_DB_USER / FLAVORLOGIC_DB_PASSWORD.
+db.url=jdbc:mysql://127.0.0.1:3306/flavor_logic?useUnicode=true&characterEncoding=UTF-8&characterSetResults=utf8mb4&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+db.user=root
+db.password=
+db.driver=com.mysql.cj.jdbc.Driver

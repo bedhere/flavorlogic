@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>食材与规则 · 食之有理 FlavorLogic</title>
+  <link rel="stylesheet" href="../lib/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/app.css?v=3" />
+  <link rel="stylesheet" href="../css/pages.css?v=3" />
+</head>
+<body>
+<div id="app"></div>
+
+<!-- 食材新增 / 编辑弹窗（八维属性为 0-100 的相对评分） -->
+<div class="modal fade" id="ingredientModal" tabindex="-1" aria-labelledby="ingredientModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ingredientModalTitle" style="font-size:15px">新增食材</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+      </div>
+      <div class="modal-body">
+        <form id="ingredientForm" novalidate>
+          <input type="hidden" id="ingredientId" />
+          <div class="form-grid">
+            <div class="field">
+              <label for="ingredientName">名称 <span class="req">*</span></label>
+              <input type="text" id="ingredientName" maxlength="100" placeholder="例如：赤藓糖醇" autocomplete="off" />
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="ingredientCategory">分类</label>
+              <input type="text" id="ingredientCategory" maxlength="50" list="ingredientCategoryList" placeholder="例如：甜味料" autocomplete="off" />
+              <datalist id="ingredientCategoryList"></datalist>
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="ingredientUnit">默认单位</label>
+              <input type="text" id="ingredientUnit" maxlength="20" placeholder="留空按 g 保存" autocomplete="off" />
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="ingredientDataSource">数据来源</label>
+              <input type="text" id="ingredientDataSource" maxlength="255" placeholder="例如：课设示例数据" autocomplete="off" />
+              <div class="error"></div>
+            </div>
+            <div class="field span-2">
+              <label>八维风味属性</label>
+              <div class="form-grid" id="ingredientDimensions"></div>
+              <div class="hint">0-100 相对评分：数值表示该食材在对应风味维度上的相对强度，不是实验室检测值。</div>
+            </div>
+            <div class="field span-2">
+              <label for="ingredientDescription">说明</label>
+              <textarea id="ingredientDescription" maxlength="500" placeholder="风味特征、使用注意或替代关系"></textarea>
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="ingredientStatus">状态</label>
+              <select id="ingredientStatus">
+                <option value="1">启用</option>
+                <option value="0">停用</option>
+              </select>
+              <div class="error"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="secondary-btn" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="primary-btn" id="ingredientSaveBtn">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/bootstrap.bundle.min.js"></script>
+<script src="../js/common.js?v=4"></script>
+<script src="../js/admin-ingredients.js?v=3"></script>
+</body>
+</html>

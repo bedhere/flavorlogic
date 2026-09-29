@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>产品说明 · 食之有理 FlavorLogic</title>
+  <meta name="description" content="食之有理的计算口径、判定阈值、数据来源与结果边界：八维风味向量、雷达图、绝对差值图、味觉打分、规则引擎与置信度算法。" />
+  <link rel="stylesheet" href="lib/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/app.css?v=4" />
+  <link rel="stylesheet" href="css/pages.css?v=4" />
+</head>
+<body>
+<div class="shell">
+  <!-- 顶栏：与首页保持一致（含悬停信息面板） -->
+  <header class="topbar is-dark" id="topbar">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span>食之有理 <span style="font-weight:500;opacity:.72">FlavorLogic</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <div class="nav-item">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+            产品能力<i class="caret" aria-hidden="true">⌄</i>
+          </button>
+          <div class="mega" role="menu" aria-label="产品能力">
+            <div class="mega-groups">
+              <div class="mega-group">
+                <p class="mega-group-title">口味怎么算</p>
+                <a class="mega-card" role="menuitem" href="features.html#vector">
+                  <span class="mega-icon" aria-hidden="true">8D</span>
+                  <strong>八维风味向量</strong>
+                  <span class="mega-desc">甜咸酸苦鲜辣麻脂香，按用量加权成一个可比较的向量</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#score">
+                  <span class="mega-icon" aria-hidden="true">分</span>
+                  <strong>味觉打分与特征</strong>
+                  <span class="mega-desc">逐维得分、平均强度与风味特征，看清这份配方是什么味型</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#data">
+                  <span class="mega-icon" aria-hidden="true">源</span>
+                  <strong>原料属性与数据来源</strong>
+                  <span class="mega-desc">每个属性值都标注来源，演示数据不冒充实测数据</span>
+                </a>
+              </div>
+              <div class="mega-group">
+                <p class="mega-group-title">建议怎么来</p>
+                <a class="mega-card" role="menuitem" href="features.html#rules">
+                  <span class="mega-icon" aria-hidden="true">规</span>
+                  <strong>规则引擎与补偿建议</strong>
+                  <span class="mega-desc">每条建议都带触发条件、参考幅度与风险提示，不是凭空生成</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#region">
+                  <span class="mega-icon" aria-hidden="true">域</span>
+                  <strong>区域口味画像</strong>
+                  <span class="mega-desc">按区域偏好权重做适配，而不是只凭个人口味调参</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#snapshot">
+                  <span class="mega-icon" aria-hidden="true">溯</span>
+                  <strong>结果快照与可追溯</strong>
+                  <span class="mega-desc">分析时固化当时的原料属性，历史结论不会事后变形</span>
+                </a>
+              </div>
+            </div>
+            <a class="mega-feature" role="menuitem" href="features.html#example">
+              <span class="mega-feature-media" style="background-image:url('assets/knowledge-lab.jpg')" aria-hidden="true"></span>
+              <span class="mega-badge">推荐 · 3 分钟</span>
+              <strong>一个真实分析案例</strong>
+              <span class="mega-desc">用演示库的「减糖 100%」任务，逐格解释图表与建议怎么读。</span>
+              <span class="mega-more">打开案例 →</span>
+            </a>
+            <div class="mega-foot">
+              <span>你现在就在产品说明页</span>
+              <a href="index.html">返回首页 →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+            怎么看结果<i class="caret" aria-hidden="true">⌄</i>
+          </button>
+          <div class="mega" role="menu" aria-label="怎么看结果">
+            <div class="mega-groups">
+              <div class="mega-group">
+                <p class="mega-group-title">先看图</p>
+                <a class="mega-card" role="menuitem" href="features.html#radar">
+                  <span class="mega-icon" aria-hidden="true">图</span>
+                  <strong>八维雷达图</strong>
+                  <span class="mega-desc">单方案看味型轮廓，对比模式看基准与目标差在哪</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#delta">
+                  <span class="mega-icon" aria-hidden="true">Δ</span>
+                  <strong>绝对差值条形图</strong>
+                  <span class="mega-desc">以 0 为中线，一眼看出哪一维真的动了、动了多少</span>
+                </a>
+              </div>
+              <div class="mega-group">
+                <p class="mega-group-title">再判读</p>
+                <a class="mega-card" role="menuitem" href="features.html#confidence">
+                  <span class="mega-icon" aria-hidden="true">信</span>
+                  <strong>数据完整度与置信度</strong>
+                  <span class="mega-desc">结论有多可靠取决于原料数据有多全，这里给出计算口径</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#boundary">
+                  <span class="mega-icon" aria-hidden="true">界</span>
+                  <strong>边界与免责说明</strong>
+                  <span class="mega-desc">能做到什么、做不到什么，以及比例何时不具参考性</span>
+                </a>
+              </div>
+              <div class="mega-group">
+                <p class="mega-group-title">上手看</p>
+                <a class="mega-card" role="menuitem" href="features.html#example">
+                  <span class="mega-icon" aria-hidden="true">例</span>
+                  <strong>一个真实案例</strong>
+                  <span class="mega-desc">用演示库的「减糖 100%」任务逐格讲解结果怎么读</span>
+                </a>
+                <a class="mega-card" role="menuitem" href="features.html#faq">
+                  <span class="mega-icon" aria-hidden="true">问</span>
+                  <strong>常见问题</strong>
+                  <span class="mega-desc">比例为什么会被放大、置信度为什么会掉、结论能不能直接用</span>
+                </a>
+              </div>
+            </div>
+            <a class="mega-feature" role="menuitem" href="features.html#faq">
+              <span class="mega-feature-media" style="background-image:url('assets/hero-ingredients.jpg')" aria-hidden="true"></span>
+              <span class="mega-badge">示例</span>
+              <strong>甜 −39.78%，苦 +202.44%</strong>
+              <span class="mega-desc">同一张结果页里，为什么一个比例可以直接用、另一个要看绝对差值？</span>
+              <span class="mega-more">跟着案例读一遍 →</span>
+            </a>
+            <div class="mega-foot">
+              <span>不确定某个结论该怎么读？</span>
+              <a href="features.html#boundary">先看边界说明 →</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="index.html#workflow">研发闭环</a>
+        <a href="articles.html">知识库</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" data-action="theme" aria-label="切换主题">☼</button>
+        <a class="text-btn" href="login.html">登录</a>
+        <a class="primary-btn" href="register.html">开始使用</a>
+        <button class="mobile-menu" type="button" data-action="menu" aria-label="打开菜单">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 页首 -->
+  <section class="doc-hero">
+    <div class="container">
+      <div class="eyebrow">产品说明 · 计算口径与可信边界</div>
+      <h1>每一个数字，都能追到它怎么来的</h1>
+      <p>这页不介绍功能列表，只回答三个问题：风味是怎么算出来的、结果该怎么读、哪些话我们不敢说。看完再决定要不要把配方交给它。</p>
+    </div>
+  </section>
+
+  <div class="container doc-layout">
+    <!-- 目录 -->
+    <nav class="doc-nav" aria-label="本页目录">
+      <a href="#overview">一、这是什么</a>
+      <a href="#vector">二、八维风味向量</a>
+      <a href="#data">三、原料属性与数据来源</a>
+      <a href="#score">四、味觉打分与风味特征</a>
+      <a href="#radar">五、八维雷达图</a>
+      <a href="#delta">六、绝对差值条形图</a>
+      <a href="#example">七、真实案例（减糖 100%）</a>
+      <a href="#rules">八、规则引擎与补偿建议</a>
+      <a href="#region">九、区域口味画像</a>
+      <a href="#confidence">十、数据完整度与置信度</a>
+      <a href="#snapshot">十一、结果快照与可追溯</a>
+      <a href="#boundary">十二、边界与免责</a>
+      <a href="#faq">十三、常见问题</a>
+    </nav>
+
+    <main class="doc-main">
+      <!-- 一 -->
+      <section class="doc-section panel" id="overview">
+        <h2>一、这是什么</h2>
+        <p class="doc-lead">食之有理 FlavorLogic 是一个面向食饮研发的风味分析模拟器：把配方（原料 + 用量）换算成八维风味向量，算出「改成目标方案后每一维变了多少」，再按规则库给出可解释的补偿建议。</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>它做的事</th><th>它不做的事</th></tr></thead>
+            <tbody>
+              <tr><td>按用量加权算出八维风味的确切数值</td><td>不替代感官评价小组的实测打分</td></tr>
+              <tr><td>给出每一维的绝对差值与变化比例</td><td>不预测消费者喜好度、复购率或销量</td></tr>
+              <tr><td>按固定规则给出补偿方向、参考幅度与风险</td><td>不判断配方是否安全、合规、可量产</td></tr>
+              <tr><td>把分析时的原料属性固化成快照存档</td><td>不预测货架期、成本曲线与产线损耗</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">一句话：它负责把「凭感觉调」变成「有数据可推」，最终的确认仍然要回到打样与感官试验。中间那一行也是本项目在课设阶段的自我界定，写在这里是为了避免被误用。</p>
+      </section>
+
+      <!-- 二 -->
+      <section class="doc-section panel" id="vector">
+        <h2>二、八维风味向量：把配方变成一个可比较的坐标</h2>
+        <p class="doc-lead">八个维度固定为：甜、咸、酸、苦、鲜、辣、麻、脂香。每份配方最终都会得到一组八个数，这就是它的风味向量。</p>
+        <span class="formula">食材占比 = 该食材用量 ÷ 参与计算的用量合计（只计入具备风味属性的食材）
+维度得分 = Σ（食材占比 × 该食材的该维度属性值）
+偏移比例 =（目标得分 − 基准得分）÷ max(|基准得分|, 1) × 100%</span>
+        <p class="doc-lead">三个要点值得注意：</p>
+        <ul class="doc-list">
+          <li><strong>是加权平均，不是简单相加</strong>：所以把整份配方等比放大 2 倍，八维得分不变，改的只是总量。</li>
+          <li><strong>缺属性的食材不进分子也不进分母</strong>：它不会被当成 0 拉低得分，但会降低「数据完整度」，进而拉低置信度——这是刻意的设计，缺数据要看得见，而不是被悄悄抹平。</li>
+          <li><strong>除数有下限</strong>：比例计算时分母最小取 1，避免基准为 0 时出现除零或无穷大。</li>
+        </ul>
+        <figure class="doc-figure">
+          <svg viewBox="0 0 420 96" width="100%" height="96" role="img" aria-label="加权平均示意：三种原料按用量占比乘以属性值后相加">
+            <g font-size="11" fill="currentColor">
+              <rect x="8" y="26" width="96" height="40" rx="8" fill="#157a56" fill-opacity=".12" stroke="#157a56" stroke-opacity=".4"></rect>
+              <text x="56" y="42" text-anchor="middle">鸡胸肉 200g</text>
+              <text x="56" y="58" text-anchor="middle" opacity=".7">占比 57% × 鲜 35</text>
+              <text x="128" y="51" text-anchor="middle" font-size="16">×</text>
+              <rect x="146" y="26" width="96" height="40" rx="8" fill="#157a56" fill-opacity=".12" stroke="#157a56" stroke-opacity=".4"></rect>
+              <text x="194" y="42" text-anchor="middle">食盐 6g</text>
+              <text x="194" y="58" text-anchor="middle" opacity=".7">占比 2% × 咸 100</text>
+              <text x="266" y="51" text-anchor="middle" font-size="16">=</text>
+              <rect x="284" y="20" width="128" height="52" rx="8" fill="#157a56" fill-opacity=".9"></rect>
+              <text x="348" y="42" text-anchor="middle" fill="#fff">鲜 21.6 / 咸 0.6</text>
+              <text x="348" y="58" text-anchor="middle" fill="#fff" opacity=".8">按占比加权求和</text>
+            </g>
+          </svg>
+          <figcaption>示意：每种原料的「用量占比 × 属性值」逐维相加，得到整份配方的维度得分。图中数值仅作算式示意。</figcaption>
+        </figure>
+      </section>
+
+      <!-- 三 -->
+      <section class="doc-section panel" id="data">
+        <h2>三、原料属性与数据来源：先把数据说清楚</h2>
+        <p class="doc-lead">八维属性存在原料档案里（<code>ingredient</code> 表的 sweet / salty / sour / bitter / umami / spicy / numbing / fat_aroma 八个字段），每条记录都带一个来源字段。当前演示库中 18 种原料的来源统一标注为：</p>
+        <span class="formula">课设演示相对评分</span>
+        <p class="doc-lead">这句话的含义要说透：这些数值是<strong>用于演示计算链路与界面交互的相对评分</strong>，量纲是 0–100 的相对强度（例如白砂糖甜度 100、味精鲜度 100、食盐咸度 100），<strong>不是</strong>感官实验室测出来的绝对强度，也没有引用具体的检测报告。所以在正式研发场景里，正确的用法是：</p>
+        <ul class="doc-list">
+          <li>把原料属性替换成本企业自己的感官评价数据或供应商规格数据；</li>
+          <li>属性值可以在管理后台直接维护（原料管理 → 编辑），改完之后新发起的分析会自动使用新值；</li>
+          <li>已经完成的历史分析不会跟着变——原因见第十一节「结果快照」。</li>
+        </ul>
+        <div class="notice">我们不把演示数据包装成实测数据。任何声称“基于实测原料数据库”的表述，在没有检测报告支撑时都是不成立的。</div>
+      </section>
+
+      <!-- 四 -->
+      <section class="doc-section panel" id="score">
+        <h2>四、味觉打分与风味特征：先看清改完是什么味型</h2>
+        <p class="doc-lead">结果页的第一块面板是<strong>目标方案自身</strong>的八维得分，不涉及与基准的对比，回答的是「这份配方现在是什么味道画像」。</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>元素</th><th>含义</th><th>口径</th></tr></thead>
+            <tbody>
+              <tr><td>单维得分</td><td>该维度的加权平均得分</td><td>0–100 相对量表，保留一位小数</td></tr>
+              <tr><td>平均强度</td><td>八维得分的算术平均</td><td>反映整体“存在感”，<code>合计 ÷ 8</code></td></tr>
+              <tr><td>八维合计</td><td>八维得分之和</td><td>上限 800</td></tr>
+              <tr><td>风味特征</td><td>得分最高的前三个维度</td><td>得分为 0 的维度不列入</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">需要强调：这里<strong>没有「好吃 / 不好吃」的评级</strong>。得分高低只代表该维度在配方中的强度高低，不代表好坏——甜度高对一款甜品是目标，对一款控糖饮品就是问题。判断好坏要结合分析目标（控脂 / 减糖 / 区域适配）与人的感官结论。</p>
+      </section>
+
+      <!-- 五 -->
+      <section class="doc-section panel" id="radar">
+        <h2>五、八维雷达图：看轮廓，也看两条线的间距</h2>
+        <p class="doc-lead">雷达图把八个维度摊在同一个圆周上，适合看「味型轮廓」——哪几维突出、哪几维几乎贴地。结果页提供两种模式：</p>
+        <ul class="doc-list">
+          <li><strong>单方案模式（默认）</strong>：只画目标方案，用于快速确认味型长什么样，画面干净、不受基准干扰。</li>
+          <li><strong>对比模式</strong>：把基准方案以虚线叠加，两条线之间的间距就是该维度的变化幅度，适合向他人解释“我们改了什么”。</li>
+        </ul>
+        <figure class="doc-figure">
+          <svg viewBox="0 0 460 210" width="100%" height="210" role="img" aria-label="雷达图与绝对差值图两种读法的示意">
+            <g transform="translate(105,105)" stroke="#c9d3cd" fill="none" stroke-width="1">
+              <polygon points="0,-78 55,-55 78,0 55,55 0,78 -55,55 -78,0 -55,-55"></polygon>
+              <polygon points="0,-52 37,-37 52,0 37,37 0,52 -37,37 -52,0 -37,-37"></polygon>
+              <polygon points="0,-26 18,-18 26,0 18,18 0,26 -18,18 -26,0 -18,-18"></polygon>
+              <line x1="0" y1="0" x2="0" y2="-78"></line><line x1="0" y1="0" x2="55" y2="-55"></line>
+              <line x1="0" y1="0" x2="78" y2="0"></line><line x1="0" y1="0" x2="55" y2="55"></line>
+              <line x1="0" y1="0" x2="0" y2="78"></line><line x1="0" y1="0" x2="-55" y2="55"></line>
+              <line x1="0" y1="0" x2="-78" y2="0"></line><line x1="0" y1="0" x2="-55" y2="-55"></line>
+            </g>
+            <polygon points="105,27 160,50 183,105 146,146 105,183 64,146 41,105 64,50" fill="#157a56" opacity=".18" stroke="#157a56" stroke-width="2"></polygon>
+            <polygon points="105,53 142,68 157,105 133,142 105,157 77,142 62,105 86,68" fill="none" stroke="#b8842a" stroke-width="2" stroke-dasharray="5 4"></polygon>
+            <g font-size="10" fill="currentColor" text-anchor="middle">
+              <text x="105" y="18">甜</text><text x="176" y="46">咸</text><text x="203" y="108">酸</text>
+              <text x="176" y="170">苦</text><text x="105" y="200">鲜</text><text x="34" y="170">辣</text>
+              <text x="7" y="108">麻</text><text x="34" y="46">脂香</text>
+            </g>
+            <g transform="translate(250,20)" font-size="11" fill="currentColor">
+              <rect x="0" y="8" width="150" height="18" rx="4" fill="#157a56" opacity=".18" stroke="#157a56"></rect>
+              <text x="158" y="21">目标方案（实线 + 填充）</text>
+              <line x1="0" y1="46" x2="150" y2="46" stroke="#b8842a" stroke-width="2" stroke-dasharray="5 4"></line>
+              <text x="158" y="50">基准方案（虚线，仅对比模式）</text>
+              <text x="0" y="86" opacity=".75">雷达图回答：</text>
+              <text x="0" y="104" opacity=".75">「整体味型像不像、轮廓差多少」</text>
+              <text x="0" y="132" opacity=".75">它不擅长回答：</text>
+              <text x="0" y="150" opacity=".75">「某一维到底动了几个点」</text>
+              <text x="0" y="170" opacity=".75">→ 这要用右侧的绝对差值图</text>
+            </g>
+          </svg>
+          <figcaption>左：八维雷达（实线为目标方案，虚线为基准方案）。右：两种图各自擅长回答的问题。数值仅作图形示意。</figcaption>
+        </figure>
+      </section>
+
+      <!-- 六 -->
+      <section class="doc-section panel" id="delta">
+        <h2>六、绝对差值条形图：以 0 为中线，看真实变化量</h2>
+        <p class="doc-lead">雷达图有个天然弱点：刻度从 0 开始时，1.2 和 3.7 这种差异在图上几乎看不出来；而只看百分比又会掉进另一个坑。所以结果页额外提供一张以 0 为中线、向两侧生长的差值图。</p>
+        <span class="formula">绝对差值 = 目标得分 − 基准得分
+变化比例 = 绝对差值 ÷ max(|基准得分|, 1) × 100%
+状态判定：|变化比例| &lt; 5% → 稳定；≥ 5% 且为负 → 下降；≥ 5% 且为正 → 上升</span>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>阈值常量</th><th>取值</th><th>作用</th></tr></thead>
+            <tbody>
+              <tr><td>STABLE_THRESHOLD</td><td>5%</td><td>变化比例落在 ±5% 内视为「稳定」，不计入主要变化</td></tr>
+              <tr><td>MIN_BASELINE</td><td>1</td><td>比例计算的分母下限，避免基准趋近 0 时结果爆炸</td></tr>
+              <tr><td>LOW_BASELINE</td><td>5</td><td>基准得分低于 5 时，界面标注「基准极低 · 看差值」，不再强调百分比</td></tr>
+              <tr><td>MIN_ABS_DIFF</td><td>1</td><td>摘要里「主要变化」只收录绝对差值 ≥ 1 的维度，过滤 0.15 这类噪声</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">这四个常量共同回答一个常见疑问：为什么「加了 20g 白砂糖」会显示 +593% 这种吓人的数字？因为基准那份配方本来就几乎不甜（甜度基准极低），分母很小，比例自然被放大——但它真正的含义只是「从几乎不甜变成有点甜」。这类维度看绝对差值才有意义，界面也会主动提示。</p>
+      </section>
+
+      <!-- 七 -->
+      <section class="doc-section panel" id="example">
+        <h2>七、真实案例：跟着演示库里的「减糖 100%」读一遍</h2>
+        <p class="doc-lead">下面全部数据取自本项目演示库中已保存的分析任务「减糖 100%：代糖复配与后味风险」（任务 5，历史结果，可直接在「分析历史」中打开原页面核对）。</p>
+        <p class="doc-lead">目标方案把配方里的白砂糖完全替换为赤藓糖醇，共 5 项配料。结果摘要的原文是：</p>
+        <div class="notice">本次分析对比「0 糖茶饮基底」与目标方案，共 5 项配料；主要变化：苦 上升 202.44%、甜 下降 39.78%、酸 上升 30.61% 等 4 个维度。命中 1 条规则，给出 1 条参考建议。</div>
+        <p class="doc-lead">逐维数值如下（保留两位小数）：</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>维度</th><th>基准</th><th>目标</th><th>绝对差值</th><th>变化比例</th><th>状态</th><th>该怎么读</th></tr></thead>
+            <tbody>
+              <tr><td>甜</td><td>77.35</td><td>46.58</td><td>−30.77</td><td>−39.78%</td><td>下降</td><td>基准高、差值大，比例可信：甜度确实掉了一个量级</td></tr>
+              <tr><td>苦</td><td>1.23</td><td>3.72</td><td>+2.49</td><td>+202.44%</td><td>上升</td><td>基准极低，比例被放大；真实语义是「从几乎不苦到略微发苦」</td></tr>
+              <tr><td>酸</td><td>21.56</td><td>28.16</td><td>+6.60</td><td>+30.61%</td><td>上升</td><td>比例与差值方向一致，可信</td></tr>
+              <tr><td>咸</td><td>0.47</td><td>0.62</td><td>+0.15</td><td>+15.00%</td><td>上升</td><td>差值仅 0.15，属于 0–100 量表上的噪声，不进主要变化</td></tr>
+              <tr><td>鲜</td><td>0.04</td><td>0.05</td><td>+0.01</td><td>+1.00%</td><td>稳定</td><td>变化比例 &lt; 5%，判定为稳定</td></tr>
+              <tr><td>辣 / 麻 / 脂香</td><td>0</td><td>0</td><td>0</td><td>0%</td><td>稳定</td><td>配方中不含相关原料</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">这份结果同时展示了三件事：</p>
+        <ul class="doc-list">
+          <li><strong>比例不能单独看</strong>：同样是「上升」，苦 +202.44% 的实际影响（+2.49）远小于甜的下降（−30.77）。</li>
+          <li><strong>系统会自己指出噪声</strong>：咸的 +15% 因为绝对差值不足 1，没有进入摘要的「主要变化」。</li>
+          <li><strong>解释能追到原料</strong>：苦的偏移说明写着「主要来自：『赤藓糖醇』贡献增加 165.00」，直接指到具体原料。</li>
+        </ul>
+        <p class="doc-lead">命中的那条规则与建议原文（可在结果页「补偿建议」面板看到同样内容）：</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>字段</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td>规则</td><td>SWEET_DROP_REDUCE_SUGAR · 减糖场景甜味平衡</td></tr>
+              <tr><td>动作</td><td>提示关注（NOTICE），候选方向：代糖复配、酸甜平衡调整</td></tr>
+              <tr><td>参考幅度</td><td>无固定幅度，按打样结果微调</td></tr>
+              <tr><td>风险提示</td><td>代糖复配存在后味风险，需做后味与感官复核</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">置信度 86.67%、数据完整度 100%。这个数字怎么来的，见第十节。</p>
+      </section>
+
+      <!-- 八 -->
+      <section class="doc-section panel" id="rules">
+        <h2>八、规则引擎与补偿建议：建议不是生成出来的，是匹配出来的</h2>
+        <p class="doc-lead">建议不来自语言模型，而来自规则表 <code>flavor_rule</code>：每条规则由「触发条件 JSON + 执行动作 JSON + 说明」三部分组成，系统对八维偏移逐条匹配，命中的规则才会输出建议。</p>
+        <span class="formula">condition_json：{"operator": "LTE", "dimension": "umami", "changePercent": -10}
+action_json   ：{"actionType": "ADD", "candidates": ["酵母抽提物", "香菇粉"],
+                 "referencePercentMin": 0.05, "referencePercentMax": 0.30}</span>
+        <p class="doc-lead">当前演示库启用 4 条规则，覆盖课设里的四类研发目标：</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>规则编码</th><th>规则名称</th><th>适用目标</th><th>触发条件</th><th>给出的动作</th></tr></thead>
+            <tbody>
+              <tr><td>UMAMI_DROP_GENERAL</td><td>鲜味明显下降补偿</td><td>综合分析</td><td>鲜味变化比例 ≤ −10%</td><td>从高鲜味原料中给候选（酵母抽提物、香菇粉），参考添加幅度 0.05%–0.30%</td></tr>
+              <tr><td>FAT_AROMA_DROP_REDUCE_FAT</td><td>控脂场景脂香下降提醒</td><td>控脂改造</td><td>脂香变化比例 ≤ −15%</td><td>提示关注：优先低用量增香或工艺增香，<strong>不直接恢复原油脂用量</strong></td></tr>
+              <tr><td>SPICY_OVER_TARGET</td><td>辣度超过目标范围</td><td>刺激度调整</td><td>辣度变化比例 ≥ +15%</td><td>建议降低香辛料类原料用量 5%–20% 并重新分析</td></tr>
+              <tr><td>SWEET_DROP_REDUCE_SUGAR</td><td>减糖场景甜味平衡</td><td>减糖改造</td><td>甜味变化比例 ≤ −20%</td><td>提示关注：代糖复配、酸甜平衡调整，并要求做后味复核</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">每条建议固定输出六个字段，便于逐条核对与追责：<strong>对象</strong>（哪一维、哪个原料）、<strong>动作类型</strong>（增加 / 减少 / 提示关注）、<strong>参考幅度</strong>、<strong>触发原因</strong>（引用规则说明，并带上本次的实际变化值）、<strong>风险提示</strong>、<strong>命中规则名</strong>。控脂规则特意使用 NOTICE 而不是 ADD：减脂场景下直接加回油脂是自相矛盾的建议，这类“看似合理其实有害”的推断由规则显式禁止。</p>
+        <p class="doc-lead">规则可在管理后台维护（规则管理 → 新增 / 编辑 / 停用），优先级数字越小越先匹配；命中规则的去重数量还会进入置信度计算。</p>
+      </section>
+
+      <!-- 九 -->
+      <section class="doc-section panel" id="region">
+        <h2>九、区域口味画像：按权重折算，而不是凭印象</h2>
+        <p class="doc-lead">选择区域画像后，八维向量会按该区域的权重逐维折算（全国基准全部为 1.000，等于不折算），并根据权重强弱生成「建议加强 / 建议减弱」的区域偏好建议。</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>维度</th><th>全国基准</th><th>西南地区</th><th>华东地区</th><th>华南地区</th></tr></thead>
+            <tbody>
+              <tr><td>甜</td><td>1.000</td><td>0.950</td><td>1.150</td><td>1.000</td></tr>
+              <tr><td>咸</td><td>1.000</td><td>1.050</td><td>0.950</td><td>0.900</td></tr>
+              <tr><td>鲜</td><td>1.000</td><td>1.050</td><td>1.050</td><td>1.150</td></tr>
+              <tr><td>辣</td><td>1.000</td><td>1.200</td><td>0.800</td><td>0.750</td></tr>
+              <tr><td>麻</td><td>1.000</td><td>1.250</td><td>0.800</td><td>0.750</td></tr>
+              <tr><td>脂香</td><td>1.000</td><td>1.050</td><td>0.950</td><td>0.850</td></tr>
+              <tr><td>酸 / 苦</td><td>1.000</td><td>1.000 / 0.950</td><td>0.950 / 0.900</td><td>1.000 / 0.900</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">权重判定阈值：<code>≥ 1.10</code> 视为该区域偏好更强，提示加强；<code>≤ 0.90</code> 视为偏好更弱，提示减弱；介于两者之间不生成区域建议，避免无意义的噪声提示。</p>
+        <div class="notice">这几组权重是<strong>课设演示画像</strong>，用于演示区域适配的计算链路，不是权威口味调研结论。投入使用前需要用目标城市的消费者测试数据重新校准——建议的「风险提示」字段里也写了同样这句话。</div>
+      </section>
+
+      <!-- 十 -->
+      <section class="doc-section panel" id="confidence">
+        <h2>十、数据完整度与置信度：结论有多可靠，可以被算出来</h2>
+        <p class="doc-lead">两块内容：完整度衡量「有多少用量真的有属性数据」，置信度把完整度与规则命中情况合成一个总分，提醒你这条结论值不值得直接拿去试产。</p>
+        <span class="formula">数据完整度 = 具备风味属性的用量 ÷ 配方总用量 × 100%
+结果置信度 = min(基准完整度, 目标完整度) × 0.8
+           + min(命中规则去重数 ÷ 3, 1) × 100 × 0.2      // 上限 100</span>
+        <p class="doc-lead">用第七节那个真实案例代入，可以完整复现 86.67%：</p>
+        <ul class="doc-list">
+          <li>基准与目标的完整度都是 100%（5 项配料的属性数据齐全），取较小值 = 100；</li>
+          <li>100 × 0.8 = <strong>80.00</strong>；</li>
+          <li>命中 1 条规则（减糖场景甜味平衡），去重后命中数为 1，min(1 ÷ 3, 1) = 0.3333，× 100 × 0.2 = <strong>6.67</strong>；</li>
+          <li>80.00 + 6.67 = <strong>86.67%</strong>，与结果页显示一致。</li>
+        </ul>
+        <p class="doc-lead">怎么用这个数字：完整度掉下来（比如加了没有属性数据的复配原料）会同时拉低置信度，这是提示你“别把它当确定结论”。需要说明的是，权重 0.8 / 0.2 与「3 条规则算满覆盖」都是本项目自定的口径，目的是让可靠度可比较、可解释，它<strong>不是</strong>行业标准公式，也不能理解为“86.67% 的概率正确”。</p>
+      </section>
+
+      <!-- 十一 -->
+      <section class="doc-section panel" id="snapshot">
+        <h2>十一、结果快照与可追溯：历史结论不会事后变形</h2>
+        <p class="doc-lead">每次分析都会把当时的基准配方与目标方案连同<strong>食材属性值</strong>一起固化成快照存档（<code>analysis_result.baseline_json / target_json</code>），并记录引擎版本号（当前 <code>RULE-1.0</code>）。这意味着：</p>
+        <ul class="doc-list">
+          <li>管理员后来调整了某个原料的属性值，<strong>不会</strong>改变历史分析里的数字；</li>
+          <li>同一份配方在不同时间分析得到不同结果时，可以回到旧记录确认当时用的属性值；</li>
+          <li>每条分析记录都能追溯到输入、输出、命中的规则与建议，导出或答辩时可以直接对着数据说明。</li>
+        </ul>
+        <div class="notice">口径说明：快照保证的是「历史结论可复现」，不保证「结论长期正确」——原料属性本身被修正后，应当用新数据重新分析，而不是继续引用旧结果。</div>
+      </section>
+
+      <!-- 十二 -->
+      <section class="doc-section panel" id="boundary">
+        <h2>十二、边界与免责：哪些话我们不说</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>能力边界</th><th>说明</th></tr></thead>
+            <tbody>
+              <tr><td>不是感官实测</td><td>所有得分来自「用量 × 原料相对属性」的加权计算，缺少真实感官评价小组的结果，不能替代品评。</td></tr>
+              <tr><td>不判定安全与合规</td><td>不涉及食品添加剂限量、过敏原法规、微生物与保质期等合规判断。分析页的过敏原与成本字段只是研发备忘。</td></tr>
+              <tr><td>不预测市场</td><td>不预测销量、复购与消费者偏好，区域画像只是计算权重，不是市场调研结论。</td></tr>
+              <tr><td>不替代工艺</td><td>加热、发酵、乳化、干燥等工艺对风味的实际影响未建模，结果只针对配方组成。</td></tr>
+              <tr><td>比例有适用条件</td><td>基准极低（&lt; 5）时百分比会被放大，须以绝对差值为准；界面会主动标注。</td></tr>
+              <tr><td>数据决定上限</td><td>原料属性越完整，结论越可用；属性缺失会通过完整度与置信度如实反映，不会被隐藏。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="doc-lead" style="margin-top:16px">一句话总结本系统的定位：<strong>它把打样前的试错成本降下来，把判断依据摆到桌面上；最终确认仍然由人和感官试验完成。</strong>本项目为课程设计阶段成果，演示数据仅用于功能验证。</p>
+      </section>
+
+      <!-- 十三 -->
+      <section class="doc-section panel" id="faq">
+        <h2>十三、常见问题</h2>
+        <div class="faq">
+          <details open>
+            <summary>加了 20g 白砂糖，为什么显示 +593%？</summary>
+            <p>因为基准配方的该维度得分极低（例如 1.58），比例的分母很小，算出来自然很大。这个数字对应的真实语义是「从几乎不甜变成有点甜」。基准低于 5 时，界面会标注「基准极低 · 看差值」，并按绝对差值表述，摘要里也不再写百分比。</p>
+          </details>
+          <details>
+            <summary>为什么雷达图看起来“没变化”？</summary>
+            <p>雷达图刻度从 0 开始，当某一维只变化 0.5–2 时，图形上几乎看不出来。这类差异请用绝对差值条形图（以 0 为中线）查看，它能直接显示每一维的正负与幅度。</p>
+          </details>
+          <details>
+            <summary>「稳定」是怎么判定的？</summary>
+            <p>变化比例的绝对值小于 5% 记为稳定，不进入「主要变化」摘要；此外摘要要求绝对差值不小于 1，避免 0.15 这类噪声被写成结论。</p>
+          </details>
+          <details>
+            <summary>置信度为什么下降了？</summary>
+            <p>完整度在公式里占 0.8 权重，且取基准与目标中较低的一个。只要新增了没有属性数据的原料，完整度就会下降，置信度随之下降——这是刻意设计的提醒，而不是计算错误。</p>
+          </details>
+          <details>
+            <summary>建议可以直接执行吗？</summary>
+            <p>建议给出的是方向、候选原料与参考幅度，属于打样前的参考。每条建议都带风险提示字段，例如代糖复配需要后味复核。请以实际打样与感官结论为准。</p>
+          </details>
+          <details>
+            <summary>换成自己的原料数据要怎么做？</summary>
+            <p>登录管理员账号后进入「原料管理」，逐条维护八维属性与数据来源；之后新发起的分析会使用新数据，历史分析结果保持不变（快照机制）。</p>
+          </details>
+        </div>
+      </section>
+
+      <div class="form-actions" style="justify-content:flex-start">
+        <a class="primary-btn" href="register.html">免费注册</a>
+        <a class="secondary-btn" href="index.html#trust">回到首页可信度概览</a>
+      </div>
+    </main>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container footer-row">
+      <a class="brand" href="index.html"><span class="brand-mark"></span><span>食之有理 FlavorLogic</span></a>
+      <span>让配方试错更少，让风味研发有据可循。</span>
+      <div class="footer-links">
+        <a href="features.html">产品说明</a>
+        <a href="articles.html">知识库</a>
+        <a href="login.html">登录</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.bundle.min.js"></script>
+<script src="js/common.js?v=4"></script>
+<script src="js/features.js?v=4"></script>
+</body>
+</html>

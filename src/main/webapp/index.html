@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>食之有理 FlavorLogic | 食饮研发模拟器</title>
+  <meta name="description" content="食之有理把配方、风味向量与研发约束组织成可执行的食饮研发工作流。" />
+  <link rel="stylesheet" href="lib/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/app.css?v=4" />
+  <link rel="stylesheet" href="css/pages.css?v=4" />
+  <link rel="stylesheet" href="css/landing.css?v=2" />
+</head>
+<body>
+<div class="shell landing-home">
+  <!-- 顶栏 -->
+  <header class="topbar is-dark" id="topbar">
+    <nav class="nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span>食之有理 <span style="font-weight:500;opacity:.72">FlavorLogic</span></span>
+      </a>
+      <div class="nav-links landing-nav-links" id="navLinks">
+        <a href="#system">产品能力</a>
+        <a href="#landing-structure">产品结构</a>
+        <a href="#landing-loop">研发闭环</a>
+        <a href="#knowledge">知识库</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" data-action="theme" aria-label="切换主题">☼</button>
+        <a class="text-btn" href="login.html">登录</a>
+        <a class="primary-btn" href="register.html">开始使用</a>
+        <button class="mobile-menu" type="button" data-action="menu" aria-label="打开菜单">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 沉浸式入口：只负责首页前两屏，后续继续展示完整产品信息 -->
+  <section class="landing-experience" id="landing-top" aria-label="食之有理产品概览">
+    <div class="landing-experience-viewport">
+      <div class="landing-scene" aria-hidden="true"></div>
+      <div class="landing-experience-stage">
+        <canvas class="landing-cookie-canvas" id="landing-cookie-canvas" aria-hidden="true"></canvas>
+        <div class="landing-cookie-fallback" aria-hidden="true"></div>
+        <p class="landing-eyebrow">食之有理 · 食饮研发模拟器</p>
+        <h1 class="landing-title landing-title-hero">让风味研发从试错，进入<span>推演</span></h1>
+        <p class="landing-intro">把配方、食材风味属性和研发约束组织成一条可解释的工作流，让研发人员提前看见配方调整后的风味变化。</p>
+        <h2 class="landing-title landing-title-loop">一份配方，走通完整研发闭环</h2>
+        <div class="landing-callouts" aria-label="研发闭环四个步骤">
+          <div class="landing-callout landing-callout-tl"><span class="landing-callout-icon">01</span><span><strong>结构化配方</strong><small>原料、角色、用量和工艺参数形成可计算输入。</small></span></div>
+          <div class="landing-callout landing-callout-tr"><span><strong>目标与研发约束</strong><small>支持控糖、控脂、原料替换、区域适配和刺激度调整。</small></span><span class="landing-callout-icon">02</span></div>
+          <div class="landing-callout landing-callout-bl"><span class="landing-callout-icon">03</span><span><strong>八维风味向量</strong><small>甜、咸、酸、苦、鲜、辣、麻、脂香统一进入同一张图。</small></span></div>
+          <div class="landing-callout landing-callout-br"><span><strong>补偿建议与结果快照</strong><small>输出触发原因、参考幅度、风险提示，并保存当时的输入与结果。</small></span><span class="landing-callout-icon">04</span></div>
+        </div>
+        <div class="landing-scroll-hint"><span>向下滚动，查看研发闭环</span><i aria-hidden="true">↓</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 首屏 -->
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+      <div class="fade-in">
+        <div class="eyebrow">食品研发模拟器 · 第一阶段</div>
+        <h1>让风味研发从试错，进入<em>推演</em></h1>
+        <p class="hero-copy">食之有理把配方、原料属性和研发约束组织成一条可解释的工作流。提前看见风味变化，让每一次打样都更接近答案。</p>
+        <div class="hero-actions">
+          <a class="primary-btn dark-primary" href="dashboard.html">进入研发工作台 ↗</a>
+          <a class="secondary-btn dark-btn" href="#system">看看它如何工作</a>
+        </div>
+        <div class="hero-note">基于示例数据 · 仅用于打样前研发参考　·　<a class="hero-note-link" href="features.html">第一次来？先看 3 分钟产品说明 →</a></div>
+      </div>
+      <div class="fade-in">
+        <div class="prompt-card">
+          <textarea aria-label="示例分析需求" readonly>把藤椒鸡胸减脂 25%，适配西南地区口味，并保持鲜味稳定。</textarea>
+          <div class="prompt-foot">
+            <select aria-label="选择分析类型">
+              <option>控脂改造</option>
+              <option>原料替换</option>
+              <option>区域适配</option>
+            </select>
+            <a class="prompt-submit" href="recipe-edit.html" aria-label="开始分析" style="text-decoration:none">→</a>
+          </div>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag">导入配方</span>
+          <span class="hero-tag">规则引擎</span>
+          <span class="hero-tag">8D flavor vector</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="container hero-bottom-inner">
+        <span class="hero-caption">被研发团队用于更快地做出下一版 · 输入配方 → 设定目标 → 输出偏移与建议</span>
+        <div class="carousel-controls">
+          <button class="carousel-dot active" type="button" data-hero="0" aria-label="Hero 1"></button>
+          <button class="carousel-dot" type="button" data-hero="1" aria-label="Hero 2"></button>
+          <button class="carousel-dot" type="button" data-hero="2" aria-label="Hero 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 能力条 -->
+  <section class="logo-band">
+    <div class="container logo-row">
+      <strong>FlavorLogic for food R&amp;D</strong>
+      <span>recipe intelligence</span>
+      <span>explainable rules</span>
+      <span>regional taste</span>
+      <span>pilot-ready output</span>
+    </div>
+  </section>
+
+  <!-- 核心指标 -->
+  <section class="section tight">
+    <div class="container">
+      <div class="metrics">
+        <div class="metric">
+          <span class="metric-value">8 维</span>
+          <p>把甜、咸、酸、苦、鲜、辣、麻、脂香放在同一张图上，用结构化向量替代“尝一口再说”。</p>
+        </div>
+        <div class="metric">
+          <span class="metric-value">1 次</span>
+          <p>从 3 次盲目试错，缩短到 1 次有依据的试产：先看偏移，再决定怎么改。</p>
+        </div>
+        <div class="metric">
+          <span class="metric-value" id="metricArticles">…</span>
+          <p>篇研发知识：风味科学、原料属性、健康化改造与区域口味的可追溯内容。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品能力 -->
+  <section class="section" id="system">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">产品能力</div>
+          <h2>一条连贯的研发系统</h2>
+        </div>
+        <p class="section-intro">从输入配方开始，到保存一份可回看的分析记录。每个界面都围绕研发决策，而不是堆叠功能。</p>
+      </div>
+      <div class="showcase">
+        <div class="showcase-copy">
+          <div class="showcase-label"><span>Analyze</span><span>RULE-1.0</span></div>
+          <h3>先算清楚“变了多少”，再谈“怎么补”</h3>
+          <p>系统按用量占比与食材八维属性做加权平均，得到基准与目标的风味向量，逐维给出绝对差值与变化比例；再由规则库生成带触发原因与参考幅度的补偿建议。</p>
+          <p style="margin-top:14px"><a class="showcase-link" href="features.html#vector">看看每一个数字是怎么算出来的 →</a></p>
+        </div>
+        <div class="workflow" id="workflow">
+          <article class="workflow-card">
+            <span class="workflow-num">1</span>
+            <h3>结构化配方</h3>
+            <p>原料、角色、用量与工艺参数，形成可计算的输入。</p>
+            <div class="mini-chart"><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+          <article class="workflow-card">
+            <span class="workflow-num">2</span>
+            <h3>风味向量</h3>
+            <p>基准与目标并置，偏移方向和幅度一眼可见。</p>
+            <div class="ring"></div>
+          </article>
+          <article class="workflow-card">
+            <span class="workflow-num">3</span>
+            <h3>补偿建议与解释</h3>
+            <p>每条建议说明对象、幅度、触发规则和风险；结果快照固化当时的食材属性，历史记录不会因数据调整而失真。</p>
+            <div class="vector-line"></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品结构 -->
+  <section class="section landing-structure-section" id="landing-structure">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">产品结构</div>
+          <h2>从研发人员到管理后台，每一层都有明确职责</h2>
+        </div>
+        <p class="section-intro">食之有理把身份、配方、分析引擎、知识和管理数据组织成一套可以持续沉淀的产品结构。</p>
+      </div>
+      <div class="landing-structure-grid">
+        <article class="landing-structure-card"><span class="landing-structure-index">01</span><h3>用户端</h3><p>游客阅读产品说明和研发知识；普通用户维护配方、发起分析、查看历史和反馈。</p><a href="login.html">登录研发工作台 →</a></article>
+        <article class="landing-structure-card"><span class="landing-structure-index">02</span><h3>分析引擎</h3><p>风味属性计算、目标画像折算、区域规则适配和补偿建议共同组成核心推演能力。</p><a href="features.html#vector">查看计算口径 →</a></article>
+        <article class="landing-structure-card"><span class="landing-structure-index">03</span><h3>知识与管理</h3><p>管理员维护用户、文章、食材属性和规则；知识库保存团队可以复用的判断依据。</p><a href="articles.html">浏览研发知识 →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研发闭环 -->
+  <section class="section tight landing-loop-section" id="landing-loop">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">研发闭环</div>
+          <h2>让每一次试产，都成为下一次判断的依据</h2>
+        </div>
+        <p class="section-intro">从企业目标到配方反馈，系统把一次性分析变成可以回看、复用和持续校准的研发过程。</p>
+      </div>
+      <div class="landing-loop-track">
+        <article><span>01</span><strong>提出目标</strong><small>明确控糖、控脂、替换或区域适配方向。</small></article>
+        <i aria-hidden="true">→</i><article><span>02</span><strong>录入配方</strong><small>整理原料、用量、角色和约束条件。</small></article>
+        <i aria-hidden="true">→</i><article><span>03</span><strong>风味推演</strong><small>计算基准与目标向量，识别变化方向。</small></article>
+        <i aria-hidden="true">→</i><article><span>04</span><strong>生成方案</strong><small>输出可执行调整项、补偿建议和风险提示。</small></article>
+        <i aria-hidden="true">→</i><article><span>05</span><strong>保存反馈</strong><small>固化分析快照，让试产反馈回到知识与规则。</small></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 可信度与口径 -->
+  <section class="section tight" id="trust">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">可信度与口径</div>
+          <h2>把口径写清楚，结论才站得住</h2>
+        </div>
+        <p class="section-intro">风味计算最怕“看起来很像那么回事”。这里公开数据来源、判定阈值与做不到的部分，方便你在使用前先判断它是否适合当前场景。</p>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card">
+          <span class="trust-tag">数据来源</span>
+          <h3>每个属性值都标注来源</h3>
+          <p>原料的八维属性全部带有来源标注。当前演示库使用统一的「课设演示相对评分」，不是感官实验室实测值，也不会被当作实测值展示。</p>
+          <a href="features.html#data">查看数据来源说明 →</a>
+        </article>
+        <article class="trust-card">
+          <span class="trust-tag">判定阈值</span>
+          <h3>稳定 / 上升 / 下降有明确边界</h3>
+          <p>变化比例的绝对值小于 5% 记为稳定；基准值低于 5 时比例会被放大，界面会改以绝对差值表述，并提示「比例不具参考性」。</p>
+          <a href="features.html#delta">查看差值读法 →</a>
+        </article>
+        <article class="trust-card">
+          <span class="trust-tag">置信度</span>
+          <h3>结论可靠度可以被计算</h3>
+          <p>置信度 = 数据完整度 × 0.8 + 规则覆盖率 × 0.2，其中完整度取基准与目标两者中较低的一个。原材料缺属性时，这个数字会直接下降。</p>
+          <a href="features.html#confidence">查看置信度算法 →</a>
+        </article>
+      </div>
+      <div class="form-actions" style="justify-content:flex-start;margin-top:22px">
+        <a class="secondary-btn" href="features.html">查看完整产品说明</a>
+        <a class="secondary-btn" href="features.html#example">看一个真实分析案例</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新研发知识 -->
+  <section class="section tight" id="knowledge">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">研发知识库</div>
+          <h2>沉淀配方与风味的判断依据</h2>
+        </div>
+        <p class="section-intro">知识库是核心分析能力的支撑模块，用于沉淀食品科学、原料知识与健康化改造经验。</p>
+      </div>
+      <div class="knowledge-grid" id="articleGrid">
+        <div class="loading">正在加载最新文章…</div>
+      </div>
+      <div class="form-actions" style="justify-content:flex-start;margin-top:22px">
+        <a class="secondary-btn" href="articles.html">进入知识库</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>把下一次试错，变成下一次进步。</h2>
+      <p>从一份真实配方开始，走通属于你的风味研发闭环。</p>
+      <div class="hero-actions">
+        <a class="primary-btn dark-primary" href="register.html">免费注册</a>
+        <a class="secondary-btn dark-btn" href="login.html">登录工作台</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container footer-row">
+      <a class="brand" href="index.html"><span class="brand-mark"></span><span>食之有理 FlavorLogic</span></a>
+      <span>让配方试错更少，让风味研发有据可循。</span>
+      <div class="footer-links">
+        <a href="features.html">产品说明</a>
+        <a href="dashboard.html">研发工作台</a>
+        <a href="articles.html">知识库</a>
+        <a href="login.html">登录</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.bundle.min.js"></script>
+<script src="js/common.js?v=4"></script>
+<script src="lib/three.min.js"></script>
+<script src="lib/GLTFLoader.js"></script>
+<script src="js/landing-motion.js?v=4"></script>
+<script src="js/index.js?v=4"></script>
+</body>
+</html>

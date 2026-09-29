@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登录 · 食之有理 FlavorLogic</title>
+  <meta name="description" content="登录食之有理 FlavorLogic 研发工作台，进行配方风味分析与研发知识管理。" />
+  <link rel="stylesheet" href="lib/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/app.css?v=3" />
+  <link rel="stylesheet" href="css/pages.css?v=3" />
+</head>
+<body>
+<div class="auth-page">
+  <section class="auth-visual">
+    <a class="brand" href="index.html" style="color:var(--dark-ink)">
+      <span class="brand-mark"></span>
+      <span>食之有理 <span style="font-weight:500;opacity:.72">FlavorLogic</span></span>
+    </a>
+    <div>
+      <h1>让风味研发从试错，进入<em style="color:var(--accent-2);font-style:normal">推演</em></h1>
+      <p>输入基准配方与研发目标，系统按食材八维风味属性计算偏移，并给出可解释的补偿建议。</p>
+      <ul class="auth-points">
+        <li>结构化配方：原料、用量与工艺参数可计算</li>
+        <li>八维风味向量：甜咸酸苦鲜辣麻脂香同图对比</li>
+        <li>规则引擎补偿建议：每条建议都能溯源到触发规则</li>
+        <li>分析快照留存：历史结果不因食材数据调整而失真</li>
+      </ul>
+    </div>
+    <div style="color:rgba(241,243,233,.5);font-size:11.5px">基于示例数据 · 结果仅用于打样前研发参考</div>
+  </section>
+
+  <section class="auth-form-side">
+    <div class="auth-card">
+      <h2>登录研发工作台</h2>
+      <p class="sub">使用你的账号继续配方分析工作</p>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="username">用户名 <span class="req">*</span></label>
+          <input type="text" id="username" name="username" autocomplete="username" placeholder="请输入用户名" />
+          <div class="error"></div>
+        </div>
+        <div class="field">
+          <label for="password">密码 <span class="req">*</span></label>
+          <input type="password" id="password" name="password" autocomplete="current-password" placeholder="请输入密码" />
+          <div class="error"></div>
+        </div>
+        <div class="form-actions" style="justify-content:space-between;margin-top:14px">
+          <label class="check"><input type="checkbox" id="remember" /> 记住用户名</label>
+          <a class="link-btn" href="register.html">还没有账号？去注册</a>
+        </div>
+        <button class="primary-btn" type="submit" id="loginBtn" style="width:100%;margin-top:18px">登录</button>
+      </form>
+      <div class="demo-accounts">
+        演示账号：<code>admin / Admin@123</code>（管理员）<br />
+        　　　　　<code>demo / Demo@123</code>（普通用户）
+      </div>
+      <div class="auth-foot"><a href="index.html">← 返回首页</a></div>
+    </div>
+  </section>
+</div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.bundle.min.js"></script>
+<script src="js/common.js?v=4"></script>
+<script src="js/login.js?v=3"></script>
+</body>
+</html>

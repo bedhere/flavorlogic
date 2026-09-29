@@ -1,0 +1,109 @@
+/*
+ * Public landing page only.
+ * Keep all selectors under .landing-home so the logged-in workbench keeps
+ * using the existing app shell and design system unchanged.
+ */
+.landing-home { --landing-sky: #4a8192; --landing-ink: #f7f5ea; --landing-green: #9ce3bd; overflow: visible; }
+html { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.42) transparent; }
+html::-webkit-scrollbar { width: 11px; }
+html::-webkit-scrollbar-track { background: transparent; }
+html::-webkit-scrollbar-thumb { min-height: 72px; border: 3px solid transparent; border-radius: 999px; background: rgba(255,255,255,.42); background-clip: content-box; }
+html::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.72); background-clip: content-box; }
+.landing-home .topbar { transition: background .25s ease, border-color .25s ease; }
+.landing-home .landing-nav-links { gap: 8px; margin-left: 18px; }
+.landing-home .landing-nav-links a { padding: 10px 13px; border: 1px solid rgba(255,255,255,.16); border-radius: 13px; color: rgba(247,245,234,.78); background: rgba(0,0,0,.12); transition: transform .2s ease, background .2s ease, color .2s ease; }
+.landing-home .landing-nav-links a:hover,
+.landing-home .landing-nav-links a:focus-visible { color: #fff; background: rgba(0,0,0,.28); transform: translateY(-2px); outline: none; }
+
+/* Immersive 2-screen entry */
+.landing-experience { position: relative; height: 300vh; background: var(--landing-sky); }
+.landing-experience-viewport { position: sticky; top: 0; height: 100vh; min-height: 560px; overflow: hidden; isolation: isolate; background: var(--landing-sky); }
+.landing-scene { position: absolute; inset: -28%; z-index: 0; background: linear-gradient(180deg, rgba(21,55,63,.08), rgba(16,29,19,.35)), url("../assets/wildcrumb-landscape.webp") center / cover no-repeat; transform: translate3d(0, var(--landing-bg-y, 0px), 0) scale(1.02); will-change: transform; }
+.landing-scene::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,30,36,.12), transparent 38%, rgba(11,24,18,.58) 100%); }
+.landing-experience-stage { position: absolute; inset: 0; z-index: 2; overflow: hidden; color: var(--landing-ink); }
+.landing-experience-stage::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 47%, rgba(255,255,255,.08), transparent 36%); pointer-events: none; }
+.landing-cookie-canvas { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; pointer-events: none; }
+.landing-cookie-fallback { position: absolute; z-index: 2; left: 50%; top: 53%; width: clamp(220px, 34vw, 470px); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%,-50%); background: center / cover no-repeat url("../assets/front-cookie.png"); box-shadow: 0 25px 55px rgba(0,0,0,.28); transition: opacity .3s ease; }
+.landing-eyebrow { position: absolute; z-index: 4; top: clamp(108px, 16vh, 160px); left: 8vw; margin: 0; color: var(--landing-green); font-size: clamp(11px, 1.1vw, 14px); font-weight: 700; letter-spacing: .12em; }
+.landing-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1px; margin: 0 9px 4px 0; background: currentColor; }
+.landing-title { position: absolute; z-index: 4; margin: 0; color: #fff; font-size: clamp(48px, 7vw, 112px); font-weight: 800; line-height: .94; letter-spacing: -.065em; text-wrap: balance; text-shadow: 0 12px 34px rgba(0,0,0,.12); }
+.landing-title span { color: var(--landing-green); }
+.landing-title-hero { top: 20%; left: 8vw; max-width: min(700px, 58vw); }
+.landing-title-loop { left: 50%; right: auto; bottom: 5%; width: min(720px, 70vw); max-width: none; text-align: center; opacity: 0; transform: translate(-50%, 36px); }
+.landing-intro { position: absolute; z-index: 4; top: 62%; left: 8vw; max-width: 440px; margin: 0; color: rgba(247,245,234,.82); font-size: clamp(13px, 1.35vw, 18px); line-height: 1.8; }
+.landing-callouts { position: absolute; z-index: 5; inset: 0; pointer-events: none; }
+.landing-callout { position: absolute; display: flex; align-items: center; gap: 9px; width: min(300px, 25vw); min-height: 82px; padding: 11px 13px; color: #fff; border: 1px solid rgba(255,255,255,.16); border-radius: 20px; background: rgba(8,16,15,.24); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 18px 50px rgba(0,0,0,.16); opacity: 0; transform: translateY(22px) scale(.96); transition: opacity .25s ease, transform .25s ease; }
+.landing-callout strong { display: block; font-size: clamp(12px, 1.1vw, 16px); }
+.landing-callout small { display: block; margin-top: 5px; color: rgba(247,245,234,.68); font-size: clamp(10px, .85vw, 12px); line-height: 1.45; }
+.landing-callout-icon { display: grid; flex: 0 0 46px; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: #fff; background: #101211; font-size: 11px; font-weight: 800; }
+.landing-callout-tl { top: 42%; left: 6vw; }
+.landing-callout-tr { top: 42%; right: 6vw; }
+.landing-callout-bl { top: 61%; left: 7vw; }
+.landing-callout-br { top: 61%; right: 7vw; }
+.landing-scroll-hint { position: absolute; z-index: 5; bottom: 27px; left: 50%; display: flex; align-items: center; gap: 10px; color: rgba(247,245,234,.7); font-size: 11px; letter-spacing: .06em; transform: translateX(-50%); }
+.landing-scroll-hint i { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; font-style: normal; }
+.landing-home.landing-loop-visible .landing-title-loop { opacity: 1; transform: translateY(0); }
+.landing-home.landing-loop-visible .landing-callout { opacity: 1; transform: translateY(0) scale(1); }
+
+/* Content bridges between the reference composition and the existing product page. */
+.landing-home .landing-structure-section { background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--surface-2) 48%, var(--bg))); }
+.landing-structure-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.landing-structure-card { position: relative; min-height: 250px; padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); overflow: hidden; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.landing-structure-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 38%, var(--line)); }
+.landing-structure-index { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+.landing-structure-card h3 { margin: 46px 0 9px; font-size: 20px; }
+.landing-structure-card p { margin: 0 0 20px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.landing-structure-card a { color: var(--accent); font-size: 12px; font-weight: 700; }
+.landing-loop-section { background: var(--surface-2); }
+.landing-loop-track { display: flex; align-items: stretch; gap: 10px; }
+.landing-loop-track article { flex: 1; min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
+.landing-loop-track article > span { color: var(--accent); font-size: 11px; font-weight: 700; }
+.landing-loop-track strong { display: block; margin-top: 17px; font-size: 15px; }
+.landing-loop-track small { display: block; margin-top: 7px; color: var(--muted); font-size: 11.5px; line-height: 1.55; }
+.landing-loop-track > i { align-self: center; color: var(--accent); font-style: normal; font-size: 20px; }
+
+@media (max-width: 900px) {
+  .landing-home .landing-nav-links { gap: 0; margin-left: 0; }
+  .landing-home .landing-nav-links a { padding: 13px 10px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; color: var(--muted); background: transparent; }
+  .landing-title { font-size: clamp(48px, 8.5vw, 92px); }
+  .landing-title-hero { top: 19%; left: 7vw; max-width: 68vw; }
+  .landing-intro { top: 60%; left: 7vw; max-width: 50vw; }
+  .landing-title-loop { left: 50%; right: auto; width: 82vw; max-width: none; }
+  .landing-callout { width: min(270px, 34vw); }
+  .landing-callout-tl { left: 3vw; }
+  .landing-callout-tr { right: 3vw; }
+  .landing-callout-bl { left: 3vw; }
+  .landing-callout-br { right: 3vw; }
+  .landing-structure-grid { grid-template-columns: 1fr; }
+  .landing-loop-track { display: grid; grid-template-columns: 1fr 1fr; }
+  .landing-loop-track > i { display: none; }
+}
+
+@media (max-width: 640px) {
+  .landing-experience { height: 270vh; }
+  .landing-experience-viewport { min-height: 520px; }
+  .landing-eyebrow { top: 105px; left: 20px; max-width: calc(100% - 40px); font-size: 10px; }
+  .landing-title { font-size: clamp(42px, 13vw, 68px); line-height: .98; letter-spacing: -.07em; }
+  .landing-title-hero { top: 15%; left: 20px; max-width: calc(100% - 40px); }
+  .landing-intro { top: 42%; left: 20px; max-width: calc(100% - 40px); font-size: 13px; line-height: 1.65; }
+  .landing-title-loop { left: 20px; right: 20px; bottom: 15%; width: auto; max-width: none; font-size: clamp(36px, 10.5vw, 58px); transform: translateY(36px); }
+  .landing-cookie-fallback { top: 64%; width: min(58vw, 270px); }
+  .landing-callout { width: calc(50% - 25px); min-height: 74px; padding: 8px; gap: 6px; border-radius: 16px; }
+  .landing-callout-tl, .landing-callout-tr { top: 56%; }
+  .landing-callout-bl, .landing-callout-br { top: 70%; }
+  .landing-callout-tl, .landing-callout-bl { left: 13px; }
+  .landing-callout-tr, .landing-callout-br { right: 13px; }
+  .landing-callout-icon { flex-basis: 34px; width: 34px; height: 48px; border-radius: 12px; font-size: 10px; }
+  .landing-callout strong { font-size: 11px; }
+  .landing-callout small { font-size: 9px; line-height: 1.3; }
+  .landing-scroll-hint { bottom: 16px; font-size: 10px; white-space: nowrap; }
+  .landing-loop-track { grid-template-columns: 1fr; }
+  .landing-structure-card { min-height: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-scene, .landing-title-loop, .landing-callout, .landing-structure-card, .landing-nav-links a { transition: none !important; }
+  .landing-experience { height: 100vh; }
+  .landing-callout { opacity: 1; transform: none; }
+  .landing-title-loop { opacity: 1; transform: none; }
+}
