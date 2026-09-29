@@ -63,11 +63,23 @@
       cookieGroup.rotation.set(0, 0, 0);
       cookieGroup.scale.setScalar(window.innerWidth <= 640 ? .78 : .9);
     }
-    if (fallback) { fallback.style.opacity = '1'; }
+    showFallback();
+  }
+
+  function showFallback() {
+    if (!fallback) { return; }
+    fallback.style.visibility = 'visible';
+    fallback.style.opacity = '1';
+  }
+
+  function hideFallback() {
+    if (!fallback) { return; }
+    fallback.style.opacity = '0';
+    fallback.style.visibility = 'hidden';
   }
 
   function addFallback() {
-    if (fallback) { fallback.style.opacity = '1'; }
+    showFallback();
   }
 
   function initThree() {
@@ -135,7 +147,7 @@
         });
         modelRoot.add(model);
         modelReady = true;
-        if (fallback) { fallback.style.opacity = '0'; }
+        hideFallback();
       }, undefined, function () {
         addFallback();
       });
