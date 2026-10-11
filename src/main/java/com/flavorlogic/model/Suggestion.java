@@ -53,6 +53,8 @@ public class Suggestion implements Serializable {
     private List<String> candidates = new ArrayList<>();
     /** 该建议对应的偏移比例 */
     private String changeText;
+    /** 规则或知识卡已经关联的审核证据，可为空。 */
+    private List<EvidenceReference> evidenceReferences = new ArrayList<>();
 
     public String getRuleCode() { return ruleCode; }
     public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }
@@ -101,4 +103,9 @@ public class Suggestion implements Serializable {
 
     public String getChangeText() { return changeText; }
     public void setChangeText(String changeText) { this.changeText = changeText; }
+
+    public List<EvidenceReference> getEvidenceReferences() { return evidenceReferences; }
+    public void setEvidenceReferences(List<EvidenceReference> evidenceReferences) {
+        this.evidenceReferences = evidenceReferences == null ? new ArrayList<>() : evidenceReferences;
+    }
 }

@@ -13,6 +13,9 @@ import java.util.List;
  */
 public interface FlavorKnowledgeDao {
 
+    /** 按编号查询知识卡，供证据关联校验使用。 */
+    FlavorKnowledge findById(Connection conn, Long id);
+
     /**
      * 查询全部启用中的知识卡，按维度与优先级排序。
      *

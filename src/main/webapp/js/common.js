@@ -330,12 +330,15 @@
     { key: 'analysis', text: '风味分析', href: '/analysis-run.html', icon: '◑' },
     { key: 'history', text: '分析历史', href: '/analysis-history.html', icon: '◔' },
     { key: 'articles', text: '研发知识库', href: '/articles.html', icon: '❖' },
+    { key: 'knowledge-search', text: '审核知识', href: '/knowledge-search.html', icon: '⌕' },
     { key: 'profile', text: '个人中心', href: '/profile.html', icon: '☺' }
   ];
 
   var ADMIN_NAV = [
     { key: 'admin-users', text: '用户管理', href: '/admin/users.html' },
     { key: 'admin-articles', text: '文章管理', href: '/admin/articles.html' },
+    { key: 'admin-knowledge', text: '来源审核', href: '/admin/knowledge.html' },
+    { key: 'admin-evidence', text: '证据与属性', href: '/admin/evidence.html' },
     { key: 'admin-ingredients', text: '食材与规则', href: '/admin/ingredients.html' },
     { key: 'admin-tasks', text: '分析任务', href: '/admin/tasks.html' }
   ];

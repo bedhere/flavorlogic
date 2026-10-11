@@ -7,6 +7,7 @@ import com.flavorlogic.dao.FlavorKnowledgeDao;
 import com.flavorlogic.dao.FlavorRuleDao;
 import com.flavorlogic.dao.IngredientDao;
 import com.flavorlogic.dao.RegionProfileDao;
+import com.flavorlogic.dao.RuleEvidenceDao;
 import com.flavorlogic.dao.impl.AnalysisFeedbackDaoImpl;
 import com.flavorlogic.dao.impl.AnalysisResultDaoImpl;
 import com.flavorlogic.dao.impl.AnalysisTaskDaoImpl;
@@ -14,6 +15,7 @@ import com.flavorlogic.dao.impl.FlavorKnowledgeDaoImpl;
 import com.flavorlogic.dao.impl.FlavorRuleDaoImpl;
 import com.flavorlogic.dao.impl.IngredientDaoImpl;
 import com.flavorlogic.dao.impl.RegionProfileDaoImpl;
+import com.flavorlogic.dao.impl.RuleEvidenceDaoImpl;
 import com.flavorlogic.engine.AnalysisEngine;
 import com.flavorlogic.model.AnalysisConstraints;
 import com.flavorlogic.model.AnalysisFeedback;
@@ -24,12 +26,14 @@ import com.flavorlogic.model.AnalysisTask;
 import com.flavorlogic.model.FlavorDelta;
 import com.flavorlogic.model.FlavorKnowledge;
 import com.flavorlogic.model.FlavorRule;
+import com.flavorlogic.model.EvidenceReference;
 import com.flavorlogic.model.Ingredient;
 import com.flavorlogic.model.Recipe;
 import com.flavorlogic.model.RecipeItem;
 import com.flavorlogic.model.RecipeSnapshot;
 import com.flavorlogic.model.RegionProfile;
 import com.flavorlogic.model.Suggestion;
+import com.flavorlogic.model.RuleEvidence;
 import com.flavorlogic.service.AnalysisService;
 import com.flavorlogic.service.BaseService;
 import com.flavorlogic.service.RecipeService;
@@ -82,6 +86,7 @@ public class AnalysisServiceImpl extends BaseService implements AnalysisService 
     private final IngredientDao ingredientDao = new IngredientDaoImpl();
     private final RegionProfileDao regionDao = new RegionProfileDaoImpl();
     private final FlavorRuleDao ruleDao = new FlavorRuleDaoImpl();
+    private final RuleEvidenceDao ruleEvidenceDao = new RuleEvidenceDaoImpl();
     private final FlavorKnowledgeDao knowledgeDao = new FlavorKnowledgeDaoImpl();
     private final RecipeService recipeService = new RecipeServiceImpl();
     private final AnalysisEngine engine = new AnalysisEngine();
@@ -147,6 +152,7 @@ public class AnalysisServiceImpl extends BaseService implements AnalysisService 
             // 课设阶段仅数十条，比按维度逐条查库更省连接开销
             List<FlavorKnowledge> knowledge = loadKnowledge();
             AnalysisOutcome outcome = engine.analyze(task, baseline, target, region, rules, knowledge);
+            attachEvidenceReferences(outcome.getSuggestions());
             AnalysisResult result = toEntity(taskId, outcome);
             writeVoid(conn -> {
                 resultDao.insert(conn, result);
@@ -324,6 +330,54 @@ public class AnalysisServiceImpl extends BaseService implements AnalysisService 
         } catch (RuntimeException e) {
             LOG.log(Level.WARNING, "知识卡加载失败（可能未执行知识库建表脚本），本次分析回落到规则自带候选", e);
             return new ArrayList<>();
+        }
+    }
+
+    /**
+     * 把已审核的规则/知识卡证据带入结果 JSON，供结果页展示原文链接。
+     * 证据表是增强能力；旧数据库尚未升级时不阻断主分析流程。
+     */
+    private void attachEvidenceReferences(List<Suggestion> suggestions) {
+        if (suggestions == null || suggestions.isEmpty()) {
+            return;
+        }
+        final List<RuleEvidence> links;
+        try {
+            links = read(conn -> ruleEvidenceDao.list(conn, null, null, null));
+        } catch (RuntimeException e) {
+            LOG.log(Level.WARNING, "规则证据加载失败，本次分析不展示证据链接", e);
+            return;
+        }
+        if (links == null || links.isEmpty()) {
+            return;
+        }
+        for (Suggestion suggestion : suggestions) {
+            if (suggestion == null) {
+                continue;
+            }
+            List<EvidenceReference> references = new ArrayList<>();
+            for (RuleEvidence link : links) {
+                if (!"APPROVED".equals(link.getClaimReviewStatus())
+                        || !"APPROVED".equals(link.getDocumentReviewStatus())) {
+                    continue;
+                }
+                boolean ruleMatch = !TextUtil.isBlank(suggestion.getRuleCode())
+                        && suggestion.getRuleCode().equals(link.getRuleCode());
+                boolean knowledgeMatch = !TextUtil.isBlank(suggestion.getKnowledgeCode())
+                        && suggestion.getKnowledgeCode().equals(link.getKnowledgeCode());
+                if (!ruleMatch && !knowledgeMatch) {
+                    continue;
+                }
+                EvidenceReference reference = new EvidenceReference();
+                reference.setClaimId(link.getEvidenceClaimId());
+                reference.setClaimText(link.getClaimText());
+                reference.setDocumentId(link.getDocumentId());
+                reference.setDocumentTitle(link.getDocumentTitle());
+                reference.setDocumentUrl(link.getDocumentUrl());
+                reference.setRelationType(link.getRelationType());
+                references.add(reference);
+            }
+            suggestion.setEvidenceReferences(references);
         }
     }
 

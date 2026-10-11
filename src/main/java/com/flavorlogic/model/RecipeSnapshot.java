@@ -39,6 +39,8 @@ public class RecipeSnapshot implements Serializable {
         private String ingredientCategory;
         private BigDecimal amount;
         private String unit;
+        /** 食材属性来源，通常为人工维护或已应用的证据版本。 */
+        private String dataSource;
         /** 该食材在分析时刻的八维属性 */
         private Map<String, BigDecimal> attributes = new LinkedHashMap<>();
         /** 是否具备可用属性数据 */
@@ -58,6 +60,9 @@ public class RecipeSnapshot implements Serializable {
 
         public String getUnit() { return unit; }
         public void setUnit(String unit) { this.unit = unit; }
+
+        public String getDataSource() { return dataSource; }
+        public void setDataSource(String dataSource) { this.dataSource = dataSource; }
 
         public Map<String, BigDecimal> getAttributes() { return attributes; }
         public void setAttributes(Map<String, BigDecimal> attributes) { this.attributes = attributes; }

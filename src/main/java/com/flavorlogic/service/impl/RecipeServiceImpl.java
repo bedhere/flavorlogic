@@ -217,6 +217,7 @@ public class RecipeServiceImpl extends BaseService implements RecipeService {
             if (ingredient != null) {
                 snapshotItem.setIngredientName(ingredient.getName());
                 snapshotItem.setIngredientCategory(ingredient.getCategory());
+                snapshotItem.setDataSource(ingredient.getDataSource());
                 snapshotItem.setAttributeAvailable(Boolean.TRUE);
                 Map<String, BigDecimal> attributes = new LinkedHashMap<>();
                 for (String dimension : FlavorDimensions.ALL) {

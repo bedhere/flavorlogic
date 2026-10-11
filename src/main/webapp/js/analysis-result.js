@@ -490,6 +490,20 @@
         lines += '<p class="suggestion-source">' + source.join(' · ') + '</p>';
       }
 
+      var evidenceReferences = item.evidenceReferences || [];
+      if (evidenceReferences.length) {
+        var evidenceHtml = evidenceReferences.map(function (evidence) {
+          var label = '证据声明 #' + FL.escape(evidence.claimId || '—');
+          var text = evidence.claimText ? '：' + FL.escape(evidence.claimText) : '';
+          var link = evidence.documentUrl
+            ? ' <a href="' + FL.escape(evidence.documentUrl) + '" target="_blank" rel="noopener">打开原文 ↗</a>' : '';
+          return '<li>' + label + text + link + '</li>';
+        }).join('');
+        lines += '<div class="suggestion-evidence"><span>审核证据</span><ul>' + evidenceHtml + '</ul></div>';
+      } else {
+        lines += '<p class="suggestion-evidence-empty">尚未关联审核证据声明；当前建议依据规则或知识卡生成。</p>';
+      }
+
       return '<div class="suggestion">' +
         '<span class="suggestion-num">' + (index + 1) + '</span>' +
         '<div><h3>' + FL.escape(title || '调整建议') + '</h3>' + lines + '</div>' +
@@ -543,6 +557,7 @@
         '<span class="name">' + FL.escape(name) +
         (item.ingredientCategory ? ' <span class="tag">' + FL.escape(item.ingredientCategory) + '</span>' : '') +
         (item.attributeAvailable === false ? ' <span class="tag">缺属性数据</span>' : '') +
+        (item.dataSource ? ' <span class="tag snapshot-source">数据来源：' + FL.escape(item.dataSource) + '</span>' : '') +
         '</span>' +
         '<span class="amount">' + FL.escape(FL.fmtNumber(item.amount, 2)) + ' ' +
         FL.escape(item.unit || 'g') + '</span>' +

@@ -148,13 +148,13 @@
        避免宽屏下操作按钮悬在屏幕中间；营销首页仍沿用居中容器（.container / .nav 默认规则）。 */
     .app-page > .topbar .nav { width: 100%; max-width: none; margin: 0; padding: 0 34px; }
     .app-layout { display: grid; grid-template-columns: 224px minmax(0, 1fr); min-height: calc(100vh - 72px); }
-    .app-sidebar { padding: 22px 12px; border-right: 1px solid var(--line); background: var(--surface); }
+    .app-sidebar { min-width: 0; padding: 22px 12px; border-right: 1px solid var(--line); background: var(--surface); }
     .workspace-label { padding: 0 11px 10px; color: var(--muted); font-size: 11px; letter-spacing: 0; text-transform: uppercase; }
-    .side-nav { display: grid; gap: 4px; }
+    .side-nav { display: grid; min-width: 0; gap: 4px; }
     .side-link { display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 0 11px; border: 1px solid transparent; border-radius: 8px; color: var(--muted); font-size: 13px; cursor: pointer; }
     .side-link:hover, .side-link.active { color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
     .side-link b { margin-left: auto; font-size: 11px; font-weight: 500; }
-    .app-main { min-width: 0; }
+    .app-main { min-width: 0; overflow: hidden; }
     .app-head { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 26px 34px 23px; border-bottom: 1px solid var(--line); background: var(--surface); }
     .crumb { color: var(--muted); font-size: 12px; }
     .crumb strong { color: var(--ink); font-weight: 600; }
@@ -287,4 +287,4 @@
       .suggestion strong { grid-column: 2; }
       .footer-row { align-items: start; flex-direction: column; }
     }
-  
+

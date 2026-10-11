@@ -35,23 +35,24 @@ xm-flavor_logic/
 ├── stop-flavorlogic.ps1            停止服务
 ├── README.md                       本文件
 ├── database/
-│   ├── flavor_logic.sql            建库建表 + 基础数据（15 张表，可重复执行）
+│   ├── flavor_logic.sql            建库建表 + 基础数据 + 外部资料审核表（21 张表，可重复执行）
 │   ├── demo_data.sql               演示数据快照（账号 / 配方 / 分析 / 文章）
 │   └── seed-demo-data.ps1          通过接口初始化演示数据（幂等，可重复执行）
 ├── docs/
 │   ├── 接口说明.md                 全部 REST 接口清单与请求/响应示例
+│   ├── 知识库实施说明.md            外部资料、审核、证据版本和 Yuxi 接入边界
 │   └── 答辩演示脚本.md             答辩演示流程与话术要点
 ├── tomcat-runtime/                 运行时目录（CATALINA_BASE，脚本自动生成）
 └── src/main/
     ├── java/com/flavorlogic/
-    │   ├── model/        19 个实体与 DTO（含风味向量、偏移明细、建议、快照）
-    │   ├── dao/          12 个 DAO 接口（JdbcHelper 统一参数化访问）
-    │   │   └── impl/     11 个 JDBC 实现
-    │   ├── service/      8 个业务接口 + 6 个实现（统一事务模板 BaseService）
+    │   ├── model/        31 个实体与 DTO（含风味向量、偏移明细、建议、快照、来源文档、采集任务、证据版本）
+    │   ├── dao/          20 个 DAO 接口（JdbcHelper 统一参数化访问）
+    │   │   └── impl/     19 个 JDBC 实现
+    │   ├── service/      17 个业务接口 + 15 个实现（统一事务模板 BaseService）
     │   ├── engine/       3 个分析引擎类（FlavorEngine / RuleEngine / AnalysisEngine）
-    │   ├── servlet/      14 个接口类（REST 风格，统一 JSON 协议）
+    │   ├── servlet/      21 个接口类（REST 风格，统一 JSON 协议）
     │   ├── filter/       3 个过滤器（编码与安全头 / 登录 / 管理员）
-    │   └── util/         11 个工具类（DB / 密码 / JSON / 分页 / 校验 / 操作日志 / Session …）
+    │   └── util/         13 个工具类（DB / 密码 / JSON / 分页 / 校验 / 操作日志 / Session / 受控采集 …）
     └── webapp/
         ├── index.html                公共首页（游客可见，顶部导航含悬停信息面板）
         ├── features.html             产品说明（口径 / 阈值 / 数据来源 / 边界与免责）
@@ -62,7 +63,8 @@ xm-flavor_logic/
         ├── analysis-run.html         发起风味分析（导入基准配方 → 调整目标方案 → 提交）
         ├── analysis-result.html      分析结果（雷达图 / 偏移 / 建议 / 快照 / 反馈）
         ├── analysis-history.html     分析历史
-        ├── articles.html             研发知识库
+        ├── articles.html             研发文章知识库
+        ├── knowledge-search.html    已审核来源资料检索
         ├── article-detail.html       文章详情
         ├── profile.html              个人中心
         ├── error.html                403 / 404 / 500 提示页
@@ -73,7 +75,7 @@ xm-flavor_logic/
         └── assets/                   首页与文章配图
 ```
 
-规模：**87 个 Java 文件、约 1 万行后端代码；17 个页面、18 个前端脚本。**
+规模：**145 个 Java 文件、约 1 万行后端代码；21 个页面、24 个前端脚本。**
 
 ---
 
@@ -100,10 +102,14 @@ mysql -u root -p < database/flavor_logic.sql
 ```
 
 或在 Navicat 中打开 `database/flavor_logic.sql` 执行全部语句（脚本使用 `CREATE TABLE IF NOT EXISTS` + `INSERT IGNORE`，可安全重复执行）。
-执行后会创建 `flavor_logic` 库、15 张表，并写入基础数据：5 个文章分类、44 种食材及八维属性、4 个区域画像、4 条补偿规则、64 张配料调配知识卡、22 条配料搭配关系、50 条目标模板规则。
+执行后会创建 `flavor_logic` 库、原有业务表及 6 张外部资料审核表，并写入基础数据：5 个文章分类、44 种食材及八维属性、4 个区域画像、4 条补偿规则、64 张配料调配知识卡、22 条配料搭配关系、50 条目标模板规则。外部资料默认进入 `REVIEW_PENDING`，只有审核通过的文档才允许检索。
+
+首批候选外部来源单独登记在 `database/source_sites_seed.sql`，默认 `crawl_allowed=0`，只会写入来源白名单，不会自动访问网络。执行前请先阅读 `docs/首批数据源清单.md`，确认许可、robots、请求频率和字段映射；确认后再在后台逐个启用。
 
 > 注意：`flavor_logic.sql` 在仓库中存在多个历史副本（项目根目录、`课程提交任务/` 等）。
 > **唯一正本是 `xm-flavor_logic/database/flavor_logic.sql`**，建库时请以该路径为准，避免执行到旧副本后缺少知识库表。
+
+已有旧版 15 张表的数据库升级时，可先备份数据库，再执行 `database/upgrade_knowledge_tables.sql`。该脚本只新增 6 张外部资料审核表，不重跑原有食材、规则和知识卡数据。
 
 ### 2. 配置数据库连接
 
@@ -178,7 +184,7 @@ mysql -u root -p flavor_logic < database/demo_data.sql
 | 配方闭环 | 配方 + 多条配料同事务写入；动态增删配料行；用量正数校验；重复食材拦截；编辑自动升版本号；删除为软删除 | `recipes.html` / `recipe-edit.html` / `RecipeServiceImpl` |
 | 分析闭环 | 5 类分析目标；基准与目标快照；八维偏移计算；规则引擎补偿建议；任务状态机 PENDING→RUNNING→COMPLETED/FAILED。编辑与发起分析拆为两个入口：配方库点「编辑配料」进编辑页，点「发起分析」进分析页（可选择/导入基准配方、调整目标方案） | `analysis-run.html` / `AnalysisServiceImpl` / `engine/*` |
 | 结果闭环 | 雷达图 + 偏移明细表 + 建议表（含触发原因/参考幅度/风险）+ 配方快照对比 + 解释与免责 + 打印样式；刷新或重新登录仍可回看 | `analysis-result.html` |
-| 知识闭环 | 文章列表（分类 / 关键词 / 分页）、详情、浏览计数；后台发布 / 编辑 / 下架 / 删除；来源地址与内容指纹双重去重 + 标题相似提示 | `articles.html` / `admin/articles.html` |
+| 知识闭环 | 文章列表（分类 / 关键词 / 分页）、详情、浏览计数；后台发布 / 编辑 / 下架 / 删除；外部来源文档导入、URL/正文指纹去重、审核状态和 MySQL 中文全文检索；普通用户可检索已审核来源资料 | `articles.html` / `knowledge-search.html` / `admin/knowledge.html` / `AdminKnowledgeServlet` |
 | 管理闭环 | 用户分页与启用禁用、角色调整；食材属性维护（八维 0-100 校验、名称唯一、停用）；规则只读展示；分析任务查看 | `admin/*.html` |
 | 数据安全 | 密码哈希存储；全部 SQL 参数化（PreparedStatement）；Service 层归属校验（越权访问返回 403）；文章正文白名单过滤；管理操作写文件日志 | `JdbcHelper` / 各 Service 实现 / `TextUtil.sanitizeHtml` / `OperationLog` |
 | 工程结构 | Model → DAO → Service → Servlet 四层 + Filter 层，无框架依赖；统一 JSON 协议与异常转换 | 见目录结构 |
@@ -199,6 +205,8 @@ mysql -u root -p flavor_logic < database/demo_data.sql
   写入失败整体回滚，保证「配方 + 明细」「任务 + 结果」这类组合写入的一致性；所有读写都校验数据归属。
 - **Servlet**：`BaseServlet` 统一处理参数读取、登录/管理员校验、异常转换与 JSON 输出，业务逻辑不写在 Servlet 中。
 - **Filter**：`EncodingFilter`（UTF-8 + 安全响应头）→ `AuthFilter`（页面跳登录页 / 接口 401）→ `AdminFilter`（后台 403）。
+- **外部知识资料**：先由 `source_document` 和 `evidence_claim` 在 MySQL 中完成来源留痕与人工审核，`KnowledgeProvider` 当前实现为 `MysqlKnowledgeProvider`；Yuxi 只作为后续可替换的检索提供者，不承担业务主数据。
+- **受控采集**：`source_site` 保存站点白名单和许可策略，`crawl_job` 只执行管理员明确触发的单 URL 任务；采集器检查根域名、robots、文本类型、大小和重定向，成功内容仍进入 `REVIEW_PENDING`。
 
 ### 6.2 风味分析口径（可解释、可复现）
 
@@ -225,10 +233,16 @@ mysql -u root -p flavor_logic < database/demo_data.sql
 
 | 文档 | 内容 |
 |---|---|
+| `docs/开发进度.md` | 当前实现状态、计设阶段对照、下一步验收目标与本次版本验证（2026-10-11） |
 | `docs/接口说明.md` | 全部接口的路径、方法、参数、响应结构、权限要求与错误码 |
+| `docs/知识库实施说明.md` | 外部资料来源选择、数据分层、人工审核、检索和 Yuxi 接入边界 |
+| `docs/首批数据源清单.md` | 首批候选来源、使用范围、审核要求和小规模验收标准 |
 | `docs/答辩演示脚本.md` | 10 分钟演示流程、每步操作与讲解要点、常见提问应答 |
 | `features.html`（页面内） | 产品说明：计算口径、判定阈值表、数据来源、置信度算法、真实案例逐维解读、规则清单、免责边界与常见问题 |
 | `database/flavor_logic.sql` | 数据库 DDL（含表注释、索引、外键与基础数据） |
+| `database/source_sites_seed.sql` | 首批外部来源候选登记（默认关闭自动采集） |
+| `database/upgrade_knowledge_tables.sql` | 已有 15 张表的数据库升级脚本（只新增 6 张表） |
+| `scripts/import-openfoodfacts-sample.ps1` | 受控导入 Open Food Facts 单条产品样本，结果进入 `REVIEW_PENDING` |
 | 项目根目录《项目介绍》《功能介绍》《UI 设计复刻规范》 | 需求、功能边界与 UI 复刻规范 |
 
 ---
@@ -271,8 +285,9 @@ Tomcat 默认不给静态文件发 `Cache-Control`，浏览器会按「启发式
 
 ## 九、交付物清单
 
-- 源代码：`src/main/java`（87 个类）+ `src/main/webapp`（16 个页面 + 17 个脚本 + 设计系统样式）
+- 源代码：`src/main/java`（145 个类）+ `src/main/webapp`（21 个页面 + 24 个脚本 + 设计系统样式）
 - 构建脚本：`pom.xml`、`start-flavorlogic.ps1`、`stop-flavorlogic.ps1`
 - 数据库：`database/flavor_logic.sql`（DDL + 基础数据）、`database/demo_data.sql`（演示数据快照）、
   `database/seed-demo-data.ps1`（演示数据初始化）
 - 文档：本 README、`docs/接口说明.md`、`docs/答辩演示脚本.md`
+- 知识库文档：`docs/知识库实施说明.md`（包含受控单 URL 采集设计，尚未部署 Yuxi）

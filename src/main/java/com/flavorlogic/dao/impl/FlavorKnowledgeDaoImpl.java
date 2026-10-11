@@ -23,6 +23,12 @@ public class FlavorKnowledgeDaoImpl implements FlavorKnowledgeDao {
             + "ratio_note, mechanism, risk_note, allergen_tags, evidence_source, keywords, priority, status";
 
     @Override
+    public FlavorKnowledge findById(Connection conn, Long id) {
+        return JdbcHelper.queryOne(conn, "SELECT " + COLUMNS + " FROM flavor_knowledge WHERE id = ?",
+                FlavorKnowledgeDaoImpl::mapRow, id);
+    }
+
+    @Override
     public List<FlavorKnowledge> listEnabled(Connection conn) {
         // priority 升序即匹配优先级（数值越小越优先），与建表注释一致
         String sql = "SELECT " + COLUMNS + " FROM flavor_knowledge "
