@@ -1,0 +1,6 @@
+/**
+ * 计算层：风味向量、规则建议、知识索引与配方合成。输入由 Service 加载，输出为 model 数据对象，本层不访问 HTTP 或数据库。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.engine;

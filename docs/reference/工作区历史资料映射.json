@@ -1,0 +1,46 @@
+[
+  {
+    "old": "../index.html",
+    "new": "../历史资料/index.html"
+  },
+  {
+    "old": "../预览-食材选择器.html",
+    "new": "../历史资料/预览-食材选择器.html"
+  },
+  {
+    "old": "../assets",
+    "new": "../历史资料/assets"
+  },
+  {
+    "old": "../flavor_logic.sql",
+    "new": "../历史资料/flavor_logic.sql"
+  },
+  {
+    "old": "../功能介绍.md",
+    "new": "../历史资料/功能介绍.md"
+  },
+  {
+    "old": "../计设计划.md",
+    "new": "../历史资料/计设计划.md"
+  },
+  {
+    "old": "../项目介绍.md",
+    "new": "../历史资料/项目介绍.md"
+  },
+  {
+    "old": "../食之有理.txt",
+    "new": "../历史资料/食之有理.txt"
+  },
+  {
+    "old": "../UI设计复刻规范.md",
+    "new": "../历史资料/UI设计复刻规范.md"
+  },
+  {
+    "old": "../课程提交任务",
+    "new": "../历史资料/课程提交任务"
+  },
+  {
+    "old": "../package-lock.json",
+    "new": "../历史资料/package-lock.json"
+  }
+]

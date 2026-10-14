@@ -1,0 +1,6 @@
+/**
+ * 业务数据对象：数据库实体、请求 DTO、计算结果与输入快照。JSON 字段使用 camelCase；SQL 映射由 DAO 实现完成。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.model;

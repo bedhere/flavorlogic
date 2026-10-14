@@ -1,0 +1,23 @@
+{
+  "/admin/articles.html": "/admin/article/articles.html",
+  "/admin/evidence.html": "/admin/knowledge/evidence.html",
+  "/admin/ingredients.html": "/admin/ingredient/ingredients.html",
+  "/admin/knowledge.html": "/admin/knowledge/knowledge.html",
+  "/admin/tasks.html": "/admin/analysis/tasks.html",
+  "/admin/users.html": "/admin/user/users.html",
+  "/analysis-history.html": "/modules/analysis/analysis-history.html",
+  "/analysis-result.html": "/modules/analysis/analysis-result.html",
+  "/analysis-run.html": "/modules/analysis/analysis-run.html",
+  "/article-detail.html": "/modules/article/article-detail.html",
+  "/articles.html": "/modules/article/articles.html",
+  "/dashboard.html": "/modules/dashboard/dashboard.html",
+  "/error.html": "/modules/public/error.html",
+  "/features.html": "/modules/public/features.html",
+  "/knowledge-search.html": "/modules/knowledge/knowledge-search.html",
+  "/login.html": "/modules/auth/login.html",
+  "/profile.html": "/modules/profile/profile.html",
+  "/recipe-edit.html": "/modules/recipe/recipe-edit.html",
+  "/recipe-generate.html": "/modules/recipe/recipe-generate.html",
+  "/recipes.html": "/modules/recipe/recipes.html",
+  "/register.html": "/modules/auth/register.html"
+}

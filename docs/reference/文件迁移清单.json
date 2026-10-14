@@ -1,0 +1,1018 @@
+[
+  {
+    "old": "src/main/java/com/flavorlogic/service/MetaService.java",
+    "new": "docs/reference/legacy-services/MetaService.java.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/MetaServiceImpl.java",
+    "new": "docs/reference/legacy-services/MetaServiceImpl.java.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/AnalysisFeedbackDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/AnalysisFeedbackDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/AnalysisResultDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/AnalysisResultDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/AnalysisTaskDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/AnalysisTaskDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/ArticleCategoryDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/dao/ArticleCategoryDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/ArticleDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/dao/ArticleDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/CrawlJobDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/CrawlJobDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/EvidenceClaimDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/EvidenceClaimDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/FlavorKnowledgeDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/FlavorKnowledgeDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/FlavorRuleDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/FlavorRuleDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/GoalTargetDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/dao/GoalTargetDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/AnalysisFeedbackDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/impl/AnalysisFeedbackDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/AnalysisResultDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/impl/AnalysisResultDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/AnalysisTaskDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/impl/AnalysisTaskDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/ArticleCategoryDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/dao/impl/ArticleCategoryDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/ArticleDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/dao/impl/ArticleDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/CrawlJobDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/impl/CrawlJobDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/EvidenceClaimDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/impl/EvidenceClaimDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/FlavorKnowledgeDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/impl/FlavorKnowledgeDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/FlavorRuleDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/dao/impl/FlavorRuleDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/GoalTargetDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/dao/impl/GoalTargetDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/IngredientAttributeVersionDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/impl/IngredientAttributeVersionDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/IngredientDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/dao/impl/IngredientDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/RecipeDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/dao/impl/RecipeDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/RecipeItemDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/dao/impl/RecipeItemDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/RegionProfileDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/region/dao/impl/RegionProfileDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/RuleEvidenceDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/impl/RuleEvidenceDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/SourceDocumentDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/impl/SourceDocumentDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/SourceSiteDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/impl/SourceSiteDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/UserDaoImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/dao/impl/UserDaoImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/IngredientAttributeVersionDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/IngredientAttributeVersionDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/IngredientDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/dao/IngredientDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/JdbcHelper.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/persistence/JdbcHelper.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/RecipeDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/dao/RecipeDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/RecipeItemDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/dao/RecipeItemDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/RegionProfileDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/region/dao/RegionProfileDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/RuleEvidenceDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/RuleEvidenceDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/SourceDocumentDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/SourceDocumentDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/SourceSiteDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/dao/SourceSiteDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/UserDao.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/dao/UserDao.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/engine/AnalysisEngine.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/engine/AnalysisEngine.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/engine/FlavorEngine.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/engine/FlavorEngine.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/engine/KnowledgeIndex.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/engine/KnowledgeIndex.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/engine/RecipeComposer.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/engine/RecipeComposer.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/engine/RuleEngine.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/engine/RuleEngine.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/filter/AdminFilter.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/filter/AdminFilter.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/filter/AuthFilter.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/filter/AuthFilter.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/filter/EncodingFilter.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/filter/EncodingFilter.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/AnalysisConstraints.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/AnalysisConstraints.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/AnalysisFeedback.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/AnalysisFeedback.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/AnalysisOutcome.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/AnalysisOutcome.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/AnalysisRequest.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/AnalysisRequest.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/AnalysisResult.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/AnalysisResult.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/AnalysisTask.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/AnalysisTask.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/ArticleCategory.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/model/ArticleCategory.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/ComposedRecipe.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/ComposedRecipe.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/CrawlJob.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/CrawlJob.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/EvidenceClaim.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/EvidenceClaim.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/EvidenceItem.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/EvidenceItem.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/EvidenceReference.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/EvidenceReference.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/FlavorDelta.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/FlavorDelta.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/FlavorDimensions.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/model/FlavorDimensions.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/FlavorKnowledge.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/FlavorKnowledge.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/FlavorRule.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/FlavorRule.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/FlavorVector.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/model/FlavorVector.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/GoalTarget.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/GoalTarget.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/GoalVector.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/GoalVector.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/Ingredient.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/model/Ingredient.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/IngredientAttributeVersion.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/IngredientAttributeVersion.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/KnowledgeArticle.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/model/KnowledgeArticle.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/Recipe.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/Recipe.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/RecipeItem.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/RecipeItem.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/RecipeProfile.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/RecipeProfile.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/RecipeSnapshot.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/model/RecipeSnapshot.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/RegionProfile.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/region/model/RegionProfile.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/RuleEvidence.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/RuleEvidence.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/SourceDocument.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/SourceDocument.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/SourceSite.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/model/SourceSite.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/Suggestion.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/model/Suggestion.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/User.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/model/User.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/AnalysisService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/service/AnalysisService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/ArticleService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/service/ArticleService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/BaseService.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/service/BaseService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/CrawlJobService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/CrawlJobService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/DashboardService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/dashboard/service/DashboardService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/EvidenceClaimService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/EvidenceClaimService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/GoalTemplateService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/service/GoalTemplateService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/AnalysisServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/service/impl/AnalysisServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/ArticleServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/service/impl/ArticleServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/CrawlJobServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/CrawlJobServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/DashboardServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/dashboard/service/impl/DashboardServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/EvidenceClaimServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/EvidenceClaimServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/GoalTemplateServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/service/impl/GoalTemplateServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/IngredientAttributeVersionServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/IngredientAttributeVersionServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/IngredientServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/service/impl/IngredientServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/MysqlKnowledgeProvider.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/MysqlKnowledgeProvider.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/RecipeComposeServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/service/impl/RecipeComposeServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/RecipeServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/service/impl/RecipeServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/RegionServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/region/service/impl/RegionServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/RuleEvidenceServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/RuleEvidenceServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/RuleServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/service/impl/RuleServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/SourceDocumentServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/SourceDocumentServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/SourceSiteServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/impl/SourceSiteServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/UserServiceImpl.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/service/impl/UserServiceImpl.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/IngredientAttributeVersionService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/IngredientAttributeVersionService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/IngredientService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/service/IngredientService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/KnowledgeProvider.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/KnowledgeProvider.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/RecipeComposeService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/service/RecipeComposeService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/RecipeService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/service/RecipeService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/RegionService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/region/service/RegionService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/RuleEvidenceService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/RuleEvidenceService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/RuleService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/service/RuleService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/Services.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/service/Services.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/SourceDocumentService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/SourceDocumentService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/SourceSiteService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/service/SourceSiteService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/UserService.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/service/UserService.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminArticleServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/servlet/AdminArticleServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminAttributeVersionServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/AdminAttributeVersionServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminCrawlJobServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/AdminCrawlJobServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminEvidenceClaimServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/AdminEvidenceClaimServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminIngredientServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/servlet/AdminIngredientServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminKnowledgeServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/AdminKnowledgeServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminRuleEvidenceServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/AdminRuleEvidenceServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminSourceSiteServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/AdminSourceSiteServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminTaskServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/servlet/AdminTaskServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AdminUserServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/servlet/AdminUserServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AnalysisServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/servlet/AnalysisServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/ArticleServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/servlet/ArticleServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/AuthServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/user/servlet/AuthServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/BaseServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/servlet/BaseServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/CategoryServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/article/servlet/CategoryServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/DashboardServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/dashboard/servlet/DashboardServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/IngredientServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/ingredient/servlet/IngredientServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/KnowledgeServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/knowledge/servlet/KnowledgeServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/RecipeServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/recipe/servlet/RecipeServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/RegionServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/region/servlet/RegionServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/RuleServlet.java",
+    "new": "backend/src/main/java/com/flavorlogic/module/analysis/servlet/RuleServlet.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/ApiResponse.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/ApiResponse.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/BizException.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/BizException.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/DateTimeUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/DateTimeUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/DBUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/persistence/DBUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/JsonUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/JsonUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/OperationLog.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/OperationLog.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/PageResult.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/PageResult.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/PasswordUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/PasswordUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/PublicDocumentFetcher.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/PublicDocumentFetcher.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/PublicUrlGuard.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/PublicUrlGuard.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/RobotsPolicy.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/RobotsPolicy.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/SessionUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/SessionUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/TextUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/TextUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/ValidationUtil.java",
+    "new": "backend/src/main/java/com/flavorlogic/common/util/ValidationUtil.java"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/package-info.java",
+    "new": "docs/reference/legacy-package-info/dao.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/dao/impl/package-info.java",
+    "new": "docs/reference/legacy-package-info/dao-impl.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/engine/package-info.java",
+    "new": "docs/reference/legacy-package-info/engine.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/filter/package-info.java",
+    "new": "docs/reference/legacy-package-info/filter.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/model/package-info.java",
+    "new": "docs/reference/legacy-package-info/model.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/package-info.java",
+    "new": "docs/reference/legacy-package-info/service.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/service/impl/package-info.java",
+    "new": "docs/reference/legacy-package-info/service-impl.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/servlet/package-info.java",
+    "new": "docs/reference/legacy-package-info/servlet.txt"
+  },
+  {
+    "old": "src/main/java/com/flavorlogic/util/package-info.java",
+    "new": "docs/reference/legacy-package-info/util.txt"
+  },
+  {
+    "old": "src/main/webapp/admin/articles.html",
+    "new": "frontend/admin/article/articles.html"
+  },
+  {
+    "old": "src/main/webapp/admin/evidence.html",
+    "new": "frontend/admin/knowledge/evidence.html"
+  },
+  {
+    "old": "src/main/webapp/admin/ingredients.html",
+    "new": "frontend/admin/ingredient/ingredients.html"
+  },
+  {
+    "old": "src/main/webapp/admin/knowledge.html",
+    "new": "frontend/admin/knowledge/knowledge.html"
+  },
+  {
+    "old": "src/main/webapp/admin/tasks.html",
+    "new": "frontend/admin/analysis/tasks.html"
+  },
+  {
+    "old": "src/main/webapp/admin/users.html",
+    "new": "frontend/admin/user/users.html"
+  },
+  {
+    "old": "src/main/webapp/analysis-history.html",
+    "new": "frontend/modules/analysis/analysis-history.html"
+  },
+  {
+    "old": "src/main/webapp/analysis-result.html",
+    "new": "frontend/modules/analysis/analysis-result.html"
+  },
+  {
+    "old": "src/main/webapp/analysis-run.html",
+    "new": "frontend/modules/analysis/analysis-run.html"
+  },
+  {
+    "old": "src/main/webapp/article-detail.html",
+    "new": "frontend/modules/article/article-detail.html"
+  },
+  {
+    "old": "src/main/webapp/articles.html",
+    "new": "frontend/modules/article/articles.html"
+  },
+  {
+    "old": "src/main/webapp/dashboard.html",
+    "new": "frontend/modules/dashboard/dashboard.html"
+  },
+  {
+    "old": "src/main/webapp/error.html",
+    "new": "frontend/modules/public/error.html"
+  },
+  {
+    "old": "src/main/webapp/features.html",
+    "new": "frontend/modules/public/features.html"
+  },
+  {
+    "old": "src/main/webapp/index.html",
+    "new": "frontend/index.html"
+  },
+  {
+    "old": "src/main/webapp/knowledge-search.html",
+    "new": "frontend/modules/knowledge/knowledge-search.html"
+  },
+  {
+    "old": "src/main/webapp/login.html",
+    "new": "frontend/modules/auth/login.html"
+  },
+  {
+    "old": "src/main/webapp/profile.html",
+    "new": "frontend/modules/profile/profile.html"
+  },
+  {
+    "old": "src/main/webapp/recipe-edit.html",
+    "new": "frontend/modules/recipe/recipe-edit.html"
+  },
+  {
+    "old": "src/main/webapp/recipe-generate.html",
+    "new": "frontend/modules/recipe/recipe-generate.html"
+  },
+  {
+    "old": "src/main/webapp/recipes.html",
+    "new": "frontend/modules/recipe/recipes.html"
+  },
+  {
+    "old": "src/main/webapp/register.html",
+    "new": "frontend/modules/auth/register.html"
+  },
+  {
+    "old": "src/main/webapp/assets/back-cookie.png",
+    "new": "frontend/shared/assets/back-cookie.png"
+  },
+  {
+    "old": "src/main/webapp/assets/cookie-texture.jpg",
+    "new": "frontend/shared/assets/cookie-texture.jpg"
+  },
+  {
+    "old": "src/main/webapp/assets/cookie.glb",
+    "new": "frontend/shared/assets/cookie.glb"
+  },
+  {
+    "old": "src/main/webapp/assets/front-cookie.png",
+    "new": "frontend/shared/assets/front-cookie.png"
+  },
+  {
+    "old": "src/main/webapp/assets/hero-chef.jpg",
+    "new": "frontend/shared/assets/hero-chef.jpg"
+  },
+  {
+    "old": "src/main/webapp/assets/hero-ingredients.jpg",
+    "new": "frontend/shared/assets/hero-ingredients.jpg"
+  },
+  {
+    "old": "src/main/webapp/assets/hero-kitchen.jpg",
+    "new": "frontend/shared/assets/hero-kitchen.jpg"
+  },
+  {
+    "old": "src/main/webapp/assets/knowledge-ingredients.jpg",
+    "new": "frontend/shared/assets/knowledge-ingredients.jpg"
+  },
+  {
+    "old": "src/main/webapp/assets/knowledge-lab.jpg",
+    "new": "frontend/shared/assets/knowledge-lab.jpg"
+  },
+  {
+    "old": "src/main/webapp/assets/wildcrumb-landscape.webp",
+    "new": "frontend/shared/assets/wildcrumb-landscape.webp"
+  },
+  {
+    "old": "src/main/webapp/css/app.css",
+    "new": "frontend/shared/styles/app.css"
+  },
+  {
+    "old": "src/main/webapp/css/landing.css",
+    "new": "frontend/shared/styles/landing.css"
+  },
+  {
+    "old": "src/main/webapp/css/pages.css",
+    "new": "frontend/shared/styles/pages.css"
+  },
+  {
+    "old": "src/main/webapp/js/components/fl-chart.js",
+    "new": "frontend/shared/components/fl-chart.js"
+  },
+  {
+    "old": "src/main/webapp/js/components/fl-ingredient-picker.js",
+    "new": "frontend/shared/components/fl-ingredient-picker.js"
+  },
+  {
+    "old": "src/main/webapp/js/components/landing-motion.js",
+    "new": "frontend/shared/components/landing-motion.js"
+  },
+  {
+    "old": "src/main/webapp/js/core/api.js",
+    "new": "frontend/shared/core/api.js"
+  },
+  {
+    "old": "src/main/webapp/js/core/common.js",
+    "new": "frontend/shared/core/common.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/admin/articles.js",
+    "new": "frontend/admin/article/articles.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/admin/evidence.js",
+    "new": "frontend/admin/knowledge/evidence.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/admin/ingredients.js",
+    "new": "frontend/admin/ingredient/ingredients.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/admin/knowledge.js",
+    "new": "frontend/admin/knowledge/knowledge.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/admin/tasks.js",
+    "new": "frontend/admin/analysis/tasks.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/admin/users.js",
+    "new": "frontend/admin/user/users.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/analysis-history.js",
+    "new": "frontend/modules/analysis/analysis-history.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/analysis-result.js",
+    "new": "frontend/modules/analysis/analysis-result.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/analysis-run.js",
+    "new": "frontend/modules/analysis/analysis-run.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/article-detail.js",
+    "new": "frontend/modules/article/article-detail.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/articles.js",
+    "new": "frontend/modules/article/articles.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/dashboard.js",
+    "new": "frontend/modules/dashboard/dashboard.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/error.js",
+    "new": "frontend/modules/public/error.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/features.js",
+    "new": "frontend/modules/public/features.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/index.js",
+    "new": "frontend/index.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/knowledge-search.js",
+    "new": "frontend/modules/knowledge/knowledge-search.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/login.js",
+    "new": "frontend/modules/auth/login.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/profile.js",
+    "new": "frontend/modules/profile/profile.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/recipe-edit.js",
+    "new": "frontend/modules/recipe/recipe-edit.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/recipe-generate.js",
+    "new": "frontend/modules/recipe/recipe-generate.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/recipes.js",
+    "new": "frontend/modules/recipe/recipes.js"
+  },
+  {
+    "old": "src/main/webapp/js/pages/register.js",
+    "new": "frontend/modules/auth/register.js"
+  },
+  {
+    "old": "src/main/webapp/lib/bootstrap.bundle.min.js",
+    "new": "frontend/shared/vendor/bootstrap.bundle.min.js"
+  },
+  {
+    "old": "src/main/webapp/lib/bootstrap.min.css",
+    "new": "frontend/shared/vendor/bootstrap.min.css"
+  },
+  {
+    "old": "src/main/webapp/lib/chart.umd.js",
+    "new": "frontend/shared/vendor/chart.umd.js"
+  },
+  {
+    "old": "src/main/webapp/lib/GLTFLoader.js",
+    "new": "frontend/shared/vendor/GLTFLoader.js"
+  },
+  {
+    "old": "src/main/webapp/lib/jquery.min.js",
+    "new": "frontend/shared/vendor/jquery.min.js"
+  },
+  {
+    "old": "src/main/webapp/lib/three.min.js",
+    "new": "frontend/shared/vendor/three.min.js"
+  },
+  {
+    "old": "src/main/resources/db.properties",
+    "new": "backend/src/main/resources/db.properties"
+  },
+  {
+    "old": "src/main/resources/db.properties.example",
+    "new": "backend/src/main/resources/db.properties.example"
+  },
+  {
+    "old": "src/main/webapp/WEB-INF/web.xml",
+    "new": "backend/src/main/webapp/WEB-INF/web.xml"
+  },
+  {
+    "old": "start-flavorlogic.ps1",
+    "new": "scripts/start.ps1"
+  },
+  {
+    "old": "stop-flavorlogic.ps1",
+    "new": "scripts/stop.ps1"
+  },
+  {
+    "old": "scripts/seed-demo-data.ps1",
+    "new": "scripts/data/seed-demo-data.ps1"
+  },
+  {
+    "old": "scripts/import-openfoodfacts-sample.ps1",
+    "new": "scripts/data/import-openfoodfacts-sample.ps1"
+  },
+  {
+    "old": "tools/source-index.py",
+    "new": "scripts/dev/source-index.py"
+  },
+  {
+    "old": "tools/check-frontend.js",
+    "new": "scripts/dev/check-frontend.js"
+  },
+  {
+    "old": "tools/check-features-page.js",
+    "new": "scripts/dev/check-features-page.js"
+  },
+  {
+    "old": "database/flavor_logic.sql",
+    "new": "docs/reference/legacy-database/flavor_logic-before-split.sql.txt"
+  },
+  {
+    "old": "database/upgrade_knowledge_tables.sql",
+    "new": "database/migrations/002-knowledge-tables.sql"
+  },
+  {
+    "old": "database/source_sites_seed.sql",
+    "new": "database/seeds/source_sites.sql"
+  },
+  {
+    "old": "database/prepare_product_label_claims.sql",
+    "new": "database/seeds/prepare_product_label_claims.sql"
+  },
+  {
+    "old": "database/demo_data.sql",
+    "new": "database/demo/demo_data.sql"
+  },
+  {
+    "old": "docs/开发进度.md",
+    "new": "docs/reference/开发进度.md"
+  },
+  {
+    "old": "docs/知识库实施说明.md",
+    "new": "docs/reference/知识库实施说明.md"
+  },
+  {
+    "old": "docs/首批数据源清单.md",
+    "new": "docs/reference/首批数据源清单.md"
+  },
+  {
+    "old": "docs/工程规范.md",
+    "new": "docs/01-项目结构说明.md"
+  },
+  {
+    "old": "docs/源码索引.md",
+    "new": "docs/02-功能源码对照.md"
+  },
+  {
+    "old": "docs/接口说明.md",
+    "new": "docs/03-接口说明.md"
+  },
+  {
+    "old": "docs/答辩源码追踪.md",
+    "new": "docs/05-答辩流程.md"
+  },
+  {
+    "old": "docs/答辩演示脚本.md",
+    "new": "docs/reference/答辩演示脚本.md"
+  },
+  {
+    "old": "tomcat-runtime",
+    "new": ".runtime/tomcat"
+  },
+  {
+    "old": "target",
+    "new": ".runtime/legacy-build"
+  }
+]

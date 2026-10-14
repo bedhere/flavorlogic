@@ -1,0 +1,907 @@
+[
+  {
+    "name": "注册账号",
+    "page": "modules/auth/register.html",
+    "frontendMethod": "",
+    "apiFile": "auth-api.js",
+    "http": "POST /api/auth/register",
+    "backend": [
+      "AuthServlet.doPost",
+      "UserServiceImpl.register",
+      "UserDaoImpl.findByUsername",
+      "UserDaoImpl.insert"
+    ],
+    "reads": [
+      "sys_user"
+    ],
+    "writes": [
+      "sys_user"
+    ],
+    "transaction": "账号写事务；注册不自动登录"
+  },
+  {
+    "name": "登录账号",
+    "page": "modules/auth/login.html",
+    "frontendMethod": "",
+    "apiFile": "auth-api.js",
+    "http": "POST /api/auth/login",
+    "backend": [
+      "AuthServlet.doPost",
+      "UserServiceImpl.login",
+      "UserServiceImpl.recordLogin",
+      "UserDaoImpl.findByUsername",
+      "UserDaoImpl.updateLastLogin"
+    ],
+    "reads": [
+      "sys_user"
+    ],
+    "writes": [
+      "sys_user"
+    ],
+    "transaction": "登录时间单次写事务；Session 保存登录态"
+  },
+  {
+    "name": "修改密码",
+    "page": "modules/profile/profile.html",
+    "frontendMethod": "",
+    "apiFile": "profile-api.js",
+    "http": "POST /api/auth/password",
+    "backend": [
+      "AuthServlet.doPost",
+      "UserServiceImpl.changePassword",
+      "UserDaoImpl.findById",
+      "UserDaoImpl.updatePassword"
+    ],
+    "reads": [
+      "sys_user"
+    ],
+    "writes": [
+      "sys_user"
+    ],
+    "transaction": "密码校验后写事务"
+  },
+  {
+    "name": "配方列表",
+    "page": "modules/recipe/recipes.html",
+    "frontendMethod": "load",
+    "apiFile": "recipe-api.js",
+    "http": "GET /api/recipes",
+    "backend": [
+      "RecipeServlet.doGet",
+      "RecipeServiceImpl.page",
+      "RecipeDaoImpl.pageByUser",
+      "RecipeDaoImpl.countByUser"
+    ],
+    "reads": [
+      "recipe",
+      "recipe_item"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "读取配方详情",
+    "page": "modules/recipe/recipe-edit.html",
+    "frontendMethod": "",
+    "apiFile": "recipe-api.js",
+    "http": "GET /api/recipes/{id}",
+    "backend": [
+      "RecipeServlet.doGet",
+      "RecipeServiceImpl.detail",
+      "RecipeDaoImpl.findById",
+      "RecipeItemDaoImpl.listByRecipe"
+    ],
+    "reads": [
+      "recipe",
+      "recipe_item",
+      "ingredient"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "保存新配方",
+    "page": "modules/recipe/recipe-edit.html",
+    "frontendMethod": "saveRecipe",
+    "apiFile": "recipe-api.js",
+    "http": "POST /api/recipes",
+    "backend": [
+      "RecipeServlet.doPost",
+      "RecipeServiceImpl.create",
+      "RecipeServiceImpl.saveItems",
+      "RecipeDaoImpl.insert",
+      "RecipeItemDaoImpl.insert"
+    ],
+    "reads": [],
+    "writes": [
+      "recipe",
+      "recipe_item"
+    ],
+    "transaction": "主表与配料明细同一事务"
+  },
+  {
+    "name": "修改配方",
+    "page": "modules/recipe/recipe-edit.html",
+    "frontendMethod": "saveRecipe",
+    "apiFile": "recipe-api.js",
+    "http": "PUT /api/recipes/{id}",
+    "backend": [
+      "RecipeServlet.doPut",
+      "RecipeServiceImpl.update",
+      "RecipeServiceImpl.saveItems",
+      "RecipeDaoImpl.update",
+      "RecipeItemDaoImpl.deleteByRecipe",
+      "RecipeItemDaoImpl.insert"
+    ],
+    "reads": [
+      "recipe"
+    ],
+    "writes": [
+      "recipe",
+      "recipe_item"
+    ],
+    "transaction": "增加版本，替换明细，同一事务"
+  },
+  {
+    "name": "删除配方",
+    "page": "modules/recipe/recipes.html",
+    "frontendMethod": "",
+    "apiFile": "recipe-api.js",
+    "http": "DELETE /api/recipes/{id}",
+    "backend": [
+      "RecipeServlet.doDelete",
+      "RecipeServiceImpl.delete",
+      "RecipeDaoImpl.softDelete"
+    ],
+    "reads": [
+      "recipe"
+    ],
+    "writes": [
+      "recipe"
+    ],
+    "transaction": "软删除，单次写事务"
+  },
+  {
+    "name": "查看配方自身画像",
+    "page": "modules/recipe/recipes.html",
+    "frontendMethod": "",
+    "apiFile": "recipe-api.js",
+    "http": "GET /api/recipes/profiles",
+    "backend": [
+      "RecipeServlet.doGet",
+      "RecipeServiceImpl.profiles",
+      "RecipeDaoImpl.listRecentByUser",
+      "RecipeItemDaoImpl.listByRecipeIds",
+      "IngredientDaoImpl.findByIds"
+    ],
+    "reads": [
+      "recipe",
+      "recipe_item",
+      "ingredient"
+    ],
+    "writes": [],
+    "transaction": "只算不存；不创建分析任务"
+  },
+  {
+    "name": "按目标生成候选配方",
+    "page": "modules/recipe/recipe-generate.html",
+    "frontendMethod": "generate",
+    "apiFile": "recipe-api.js",
+    "http": "GET /api/recipes/{id}/compose",
+    "backend": [
+      "RecipeServlet.doGet",
+      "RecipeComposeServiceImpl.compose",
+      "GoalTemplateServiceImpl.expand",
+      "RecipeComposer.compose",
+      "GoalTargetDaoImpl.listByGoalType",
+      "FlavorKnowledgeDaoImpl.listEnabled"
+    ],
+    "reads": [
+      "recipe",
+      "recipe_item",
+      "ingredient",
+      "region_profile",
+      "goal_target",
+      "flavor_knowledge"
+    ],
+    "writes": [],
+    "transaction": "只算不存；保存候选另调用配方创建接口"
+  },
+  {
+    "name": "保存生成的候选配方",
+    "page": "modules/recipe/recipe-generate.html",
+    "frontendMethod": "submitAdopt",
+    "apiFile": "recipe-api.js",
+    "http": "POST /api/recipes",
+    "backend": [
+      "RecipeServlet.doPost",
+      "RecipeServiceImpl.create",
+      "RecipeDaoImpl.insert",
+      "RecipeItemDaoImpl.insert"
+    ],
+    "reads": [],
+    "writes": [
+      "recipe",
+      "recipe_item"
+    ],
+    "transaction": "同配方保存事务"
+  },
+  {
+    "name": "加载食材选项",
+    "page": "modules/analysis/analysis-run.html",
+    "frontendMethod": "",
+    "apiFile": "analysis-api.js",
+    "http": "GET /api/ingredients",
+    "backend": [
+      "IngredientServlet.doGet",
+      "IngredientServiceImpl.listEnabledIngredients",
+      "IngredientServiceImpl.ingredientCategories",
+      "IngredientDaoImpl.listEnabled",
+      "IngredientDaoImpl.listCategories"
+    ],
+    "reads": [
+      "ingredient"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "加载区域画像",
+    "page": "modules/analysis/analysis-run.html",
+    "frontendMethod": "",
+    "apiFile": "analysis-api.js",
+    "http": "GET /api/regions",
+    "backend": [
+      "RegionServlet.doGet",
+      "RegionServiceImpl.listRegions",
+      "RegionProfileDaoImpl.listEnabled"
+    ],
+    "reads": [
+      "region_profile"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "提交风味分析",
+    "page": "modules/analysis/analysis-run.html",
+    "frontendMethod": "submitAnalysis",
+    "apiFile": "analysis-api.js",
+    "http": "POST /api/analysis",
+    "backend": [
+      "AnalysisServlet.doPost",
+      "AnalysisServiceImpl.analyze",
+      "AnalysisEngine.analyze",
+      "AnalysisServiceImpl.detail",
+      "AnalysisTaskDaoImpl.insert",
+      "AnalysisTaskDaoImpl.markRunning",
+      "AnalysisResultDaoImpl.insert",
+      "AnalysisTaskDaoImpl.markCompleted"
+    ],
+    "reads": [
+      "recipe",
+      "recipe_item",
+      "ingredient",
+      "region_profile",
+      "flavor_rule",
+      "flavor_knowledge",
+      "rule_evidence",
+      "evidence_claim",
+      "source_document"
+    ],
+    "writes": [
+      "analysis_task",
+      "analysis_result"
+    ],
+    "transaction": "状态分阶段提交；结果与完成状态同一事务"
+  },
+  {
+    "name": "回看已保存的结果",
+    "page": "modules/analysis/analysis-result.html",
+    "frontendMethod": "load",
+    "apiFile": "analysis-api.js",
+    "http": "GET /api/analysis/{id}",
+    "backend": [
+      "AnalysisServlet.doGet",
+      "AnalysisServiceImpl.detail",
+      "AnalysisTaskDaoImpl.findDetailById",
+      "AnalysisResultDaoImpl.findByTaskId",
+      "AnalysisFeedbackDaoImpl.findByTaskAndUser"
+    ],
+    "reads": [
+      "analysis_task",
+      "analysis_result",
+      "analysis_feedback",
+      "recipe",
+      "sys_user"
+    ],
+    "writes": [],
+    "transaction": "只读保存结果，不重新运行引擎"
+  },
+  {
+    "name": "提交或修改试产反馈",
+    "page": "modules/analysis/analysis-result.html",
+    "frontendMethod": "submitFeedback",
+    "apiFile": "analysis-api.js",
+    "http": "POST /api/analysis/{id}/feedback",
+    "backend": [
+      "AnalysisServlet.doPost",
+      "AnalysisServiceImpl.saveFeedback",
+      "AnalysisTaskDaoImpl.findById",
+      "AnalysisFeedbackDaoImpl.upsert"
+    ],
+    "reads": [
+      "analysis_task",
+      "analysis_feedback"
+    ],
+    "writes": [
+      "analysis_feedback"
+    ],
+    "transaction": "任务与用户唯一键；存在则更新"
+  },
+  {
+    "name": "搜索分析历史",
+    "page": "modules/analysis/analysis-history.html",
+    "frontendMethod": "load",
+    "apiFile": "analysis-api.js",
+    "http": "GET /api/analysis/history",
+    "backend": [
+      "AnalysisServlet.doGet",
+      "AnalysisServiceImpl.history",
+      "AnalysisTaskDaoImpl.pageByUser",
+      "AnalysisTaskDaoImpl.countByUser"
+    ],
+    "reads": [
+      "analysis_task",
+      "recipe",
+      "analysis_result"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "删除分析历史",
+    "page": "modules/analysis/analysis-history.html",
+    "frontendMethod": "",
+    "apiFile": "analysis-api.js",
+    "http": "DELETE /api/analysis/{id}",
+    "backend": [
+      "AnalysisServlet.doDelete",
+      "AnalysisServiceImpl.delete",
+      "AnalysisTaskDaoImpl.findById",
+      "AnalysisTaskDaoImpl.delete"
+    ],
+    "reads": [
+      "analysis_task"
+    ],
+    "writes": [
+      "analysis_task",
+      "analysis_result",
+      "analysis_feedback"
+    ],
+    "transaction": "删除任务；关联结果/反馈由外键级联"
+  },
+  {
+    "name": "浏览文章列表",
+    "page": "modules/article/articles.html",
+    "frontendMethod": "load",
+    "apiFile": "article-api.js",
+    "http": "GET /api/articles",
+    "backend": [
+      "ArticleServlet.doGet",
+      "ArticleServiceImpl.pageForUser",
+      "ArticleDaoImpl.page"
+    ],
+    "reads": [
+      "knowledge_article",
+      "article_category",
+      "sys_user"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "打开文章详情",
+    "page": "modules/article/article-detail.html",
+    "frontendMethod": "load",
+    "apiFile": "article-api.js",
+    "http": "GET /api/articles/{id}",
+    "backend": [
+      "ArticleServlet.doGet",
+      "ArticleServiceImpl.detailForUser",
+      "ArticleServiceImpl.related",
+      "ArticleDaoImpl.findById",
+      "ArticleDaoImpl.incrementViewCount"
+    ],
+    "reads": [
+      "knowledge_article",
+      "article_category",
+      "sys_user"
+    ],
+    "writes": [
+      "knowledge_article"
+    ],
+    "transaction": "详情读取会增加浏览量；业务使用写事务"
+  },
+  {
+    "name": "检索已审核来源资料",
+    "page": "modules/knowledge/knowledge-search.html",
+    "frontendMethod": "search",
+    "apiFile": "knowledge-api.js",
+    "http": "GET /api/knowledge/search",
+    "backend": [
+      "KnowledgeServlet.doGet",
+      "SourceDocumentServiceImpl.search",
+      "MysqlKnowledgeProvider.retrieve",
+      "SourceDocumentDaoImpl.searchApproved"
+    ],
+    "reads": [
+      "source_document",
+      "source_site"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "后台查看用户",
+    "page": "admin/user/users.html",
+    "frontendMethod": "load",
+    "apiFile": "admin-users-api.js",
+    "http": "GET /api/admin/users",
+    "backend": [
+      "AdminUserServlet.doGet",
+      "UserServiceImpl.adminPage",
+      "UserDaoImpl.page"
+    ],
+    "reads": [
+      "sys_user"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "后台改变用户角色",
+    "page": "admin/user/users.html",
+    "frontendMethod": "",
+    "apiFile": "admin-users-api.js",
+    "http": "PUT /api/admin/users/{id}/role",
+    "backend": [
+      "AdminUserServlet.doPut",
+      "UserServiceImpl.adminUpdateRole",
+      "UserDaoImpl.updateRole"
+    ],
+    "reads": [
+      "sys_user"
+    ],
+    "writes": [
+      "sys_user"
+    ],
+    "transaction": "校验操作者，写事务"
+  },
+  {
+    "name": "后台启用或禁用用户",
+    "page": "admin/user/users.html",
+    "frontendMethod": "",
+    "apiFile": "admin-users-api.js",
+    "http": "PUT /api/admin/users/{id}/status",
+    "backend": [
+      "AdminUserServlet.doPut",
+      "UserServiceImpl.adminUpdateStatus",
+      "UserDaoImpl.updateStatus"
+    ],
+    "reads": [
+      "sys_user"
+    ],
+    "writes": [
+      "sys_user"
+    ],
+    "transaction": "校验操作者，写事务"
+  },
+  {
+    "name": "后台查看食材",
+    "page": "admin/ingredient/ingredients.html",
+    "frontendMethod": "loadIngredients",
+    "apiFile": "admin-ingredients-api.js",
+    "http": "GET /api/admin/ingredients",
+    "backend": [
+      "AdminIngredientServlet.doGet",
+      "IngredientServiceImpl.adminPageIngredients",
+      "IngredientDaoImpl.page"
+    ],
+    "reads": [
+      "ingredient"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "后台新增食材",
+    "page": "admin/ingredient/ingredients.html",
+    "frontendMethod": "save",
+    "apiFile": "admin-ingredients-api.js",
+    "http": "POST /api/admin/ingredients",
+    "backend": [
+      "AdminIngredientServlet.doPost",
+      "IngredientServiceImpl.adminCreateIngredient",
+      "IngredientDaoImpl.findByName",
+      "IngredientDaoImpl.insert"
+    ],
+    "reads": [
+      "ingredient"
+    ],
+    "writes": [
+      "ingredient"
+    ],
+    "transaction": "名称与八维属性校验，写事务"
+  },
+  {
+    "name": "后台修改食材",
+    "page": "admin/ingredient/ingredients.html",
+    "frontendMethod": "save",
+    "apiFile": "admin-ingredients-api.js",
+    "http": "PUT /api/admin/ingredients/{id}",
+    "backend": [
+      "AdminIngredientServlet.doPut",
+      "IngredientServiceImpl.adminUpdateIngredient",
+      "IngredientDaoImpl.update"
+    ],
+    "reads": [
+      "ingredient"
+    ],
+    "writes": [
+      "ingredient"
+    ],
+    "transaction": "写事务；不改历史分析快照"
+  },
+  {
+    "name": "后台停用食材",
+    "page": "admin/ingredient/ingredients.html",
+    "frontendMethod": "",
+    "apiFile": "admin-ingredients-api.js",
+    "http": "DELETE /api/admin/ingredients/{id}",
+    "backend": [
+      "AdminIngredientServlet.doDelete",
+      "IngredientServiceImpl.adminUpdateIngredientStatus",
+      "IngredientDaoImpl.updateStatus"
+    ],
+    "reads": [
+      "ingredient"
+    ],
+    "writes": [
+      "ingredient"
+    ],
+    "transaction": "停用，不物理删除"
+  },
+  {
+    "name": "查看启用风味规则",
+    "page": "admin/ingredient/ingredients.html",
+    "frontendMethod": "loadRules",
+    "apiFile": "admin-ingredients-api.js",
+    "http": "GET /api/rules",
+    "backend": [
+      "RuleServlet.doGet",
+      "RuleServiceImpl.listRules",
+      "FlavorRuleDaoImpl.listEnabled"
+    ],
+    "reads": [
+      "flavor_rule"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "后台发布文章",
+    "page": "admin/article/articles.html",
+    "frontendMethod": "save",
+    "apiFile": "admin-articles-api.js",
+    "http": "POST /api/admin/articles",
+    "backend": [
+      "AdminArticleServlet.doPost",
+      "ArticleServiceImpl.adminCreate",
+      "ArticleDaoImpl.insert"
+    ],
+    "reads": [
+      "article_category"
+    ],
+    "writes": [
+      "knowledge_article"
+    ],
+    "transaction": "写事务；管理员操作记文件日志"
+  },
+  {
+    "name": "后台修改或上下架文章",
+    "page": "admin/article/articles.html",
+    "frontendMethod": "save",
+    "apiFile": "admin-articles-api.js",
+    "http": "PUT /api/admin/articles/{id}",
+    "backend": [
+      "AdminArticleServlet.doPut",
+      "ArticleServiceImpl.adminUpdate",
+      "ArticleDaoImpl.update"
+    ],
+    "reads": [
+      "knowledge_article",
+      "article_category"
+    ],
+    "writes": [
+      "knowledge_article"
+    ],
+    "transaction": "状态随请求更新；写事务"
+  },
+  {
+    "name": "后台删除文章",
+    "page": "admin/article/articles.html",
+    "frontendMethod": "",
+    "apiFile": "admin-articles-api.js",
+    "http": "DELETE /api/admin/articles/{id}",
+    "backend": [
+      "AdminArticleServlet.doDelete",
+      "ArticleServiceImpl.adminUpdateStatus",
+      "ArticleDaoImpl.updateStatus"
+    ],
+    "reads": [
+      "knowledge_article"
+    ],
+    "writes": [
+      "knowledge_article"
+    ],
+    "transaction": "软删除，写事务"
+  },
+  {
+    "name": "后台查看分析任务",
+    "page": "admin/analysis/tasks.html",
+    "frontendMethod": "load",
+    "apiFile": "admin-tasks-api.js",
+    "http": "GET /api/admin/tasks",
+    "backend": [
+      "AdminTaskServlet.doGet",
+      "AnalysisServiceImpl.adminPage",
+      "AnalysisTaskDaoImpl.pageAll"
+    ],
+    "reads": [
+      "analysis_task",
+      "recipe",
+      "analysis_result"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "查看来源文档审核队列",
+    "page": "admin/knowledge/knowledge.html",
+    "frontendMethod": "load",
+    "apiFile": "admin-knowledge-api.js",
+    "http": "GET /api/admin/knowledge/documents",
+    "backend": [
+      "AdminKnowledgeServlet.doGet",
+      "SourceDocumentServiceImpl.page",
+      "SourceDocumentDaoImpl.page"
+    ],
+    "reads": [
+      "source_document",
+      "source_site"
+    ],
+    "writes": [],
+    "transaction": "只读"
+  },
+  {
+    "name": "导入来源文档草稿",
+    "page": "admin/knowledge/knowledge.html",
+    "frontendMethod": "",
+    "apiFile": "admin-knowledge-api.js",
+    "http": "POST /api/admin/knowledge/documents",
+    "backend": [
+      "AdminKnowledgeServlet.doPost",
+      "SourceDocumentServiceImpl.importDraft",
+      "SourceDocumentDaoImpl.findByUrl",
+      "SourceDocumentDaoImpl.findByHash",
+      "SourceDocumentDaoImpl.insert"
+    ],
+    "reads": [
+      "source_site",
+      "source_document"
+    ],
+    "writes": [
+      "source_document"
+    ],
+    "transaction": "写事务；强制 REVIEW_PENDING"
+  },
+  {
+    "name": "审核来源文档",
+    "page": "admin/knowledge/knowledge.html",
+    "frontendMethod": "",
+    "apiFile": "admin-knowledge-api.js",
+    "http": "PUT /api/admin/knowledge/documents/{id}",
+    "backend": [
+      "AdminKnowledgeServlet.doPut",
+      "SourceDocumentServiceImpl.review",
+      "SourceDocumentDaoImpl.updateReview"
+    ],
+    "reads": [
+      "source_document"
+    ],
+    "writes": [
+      "source_document"
+    ],
+    "transaction": "仅审核状态与留痕；不自动改食材"
+  },
+  {
+    "name": "登记来源站点",
+    "page": "admin/knowledge/knowledge.html",
+    "frontendMethod": "",
+    "apiFile": "admin-knowledge-api.js",
+    "http": "POST /api/admin/knowledge/sites",
+    "backend": [
+      "AdminSourceSiteServlet.doPost",
+      "SourceSiteServiceImpl.create",
+      "SourceSiteDaoImpl.insert"
+    ],
+    "reads": [
+      "source_site"
+    ],
+    "writes": [
+      "source_site"
+    ],
+    "transaction": "写事务；保存许可与采集策略"
+  },
+  {
+    "name": "修改来源站点策略",
+    "page": "admin/knowledge/knowledge.html",
+    "frontendMethod": "",
+    "apiFile": "admin-knowledge-api.js",
+    "http": "PUT /api/admin/knowledge/sites/{id}",
+    "backend": [
+      "AdminSourceSiteServlet.doPut",
+      "SourceSiteServiceImpl.update",
+      "SourceSiteDaoImpl.update"
+    ],
+    "reads": [
+      "source_site"
+    ],
+    "writes": [
+      "source_site"
+    ],
+    "transaction": "写事务"
+  },
+  {
+    "name": "创建证据声明",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "POST /api/admin/knowledge/claims",
+    "backend": [
+      "AdminEvidenceClaimServlet.doPost",
+      "EvidenceClaimServiceImpl.create",
+      "EvidenceClaimDaoImpl.insert"
+    ],
+    "reads": [
+      "source_document",
+      "ingredient"
+    ],
+    "writes": [
+      "evidence_claim"
+    ],
+    "transaction": "写事务；待审核"
+  },
+  {
+    "name": "审核证据声明",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "PUT /api/admin/knowledge/claims/{id}",
+    "backend": [
+      "AdminEvidenceClaimServlet.doPut",
+      "EvidenceClaimServiceImpl.review",
+      "EvidenceClaimDaoImpl.updateReview"
+    ],
+    "reads": [
+      "evidence_claim",
+      "source_document"
+    ],
+    "writes": [
+      "evidence_claim"
+    ],
+    "transaction": "写事务"
+  },
+  {
+    "name": "创建食材属性版本",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "POST /api/admin/knowledge/attributes",
+    "backend": [
+      "AdminAttributeVersionServlet.doPost",
+      "IngredientAttributeVersionServiceImpl.create",
+      "IngredientAttributeVersionDaoImpl.insert"
+    ],
+    "reads": [
+      "ingredient",
+      "source_document",
+      "ingredient_attribute_version"
+    ],
+    "writes": [
+      "ingredient_attribute_version"
+    ],
+    "transaction": "创建版本不修改现有食材"
+  },
+  {
+    "name": "审核食材属性版本",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "PUT /api/admin/knowledge/attributes/{id}",
+    "backend": [
+      "AdminAttributeVersionServlet.doPut",
+      "IngredientAttributeVersionServiceImpl.review",
+      "IngredientAttributeVersionDaoImpl.updateReview"
+    ],
+    "reads": [
+      "ingredient_attribute_version",
+      "source_document"
+    ],
+    "writes": [
+      "ingredient_attribute_version"
+    ],
+    "transaction": "审核版本不等于应用版本"
+  },
+  {
+    "name": "应用已审核食材属性",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "PUT /api/admin/knowledge/attributes/{id}/apply",
+    "backend": [
+      "AdminAttributeVersionServlet.doPut",
+      "IngredientAttributeVersionServiceImpl.apply",
+      "IngredientAttributeVersionDaoImpl.findById",
+      "IngredientDaoImpl.update"
+    ],
+    "reads": [
+      "ingredient_attribute_version",
+      "source_document",
+      "ingredient"
+    ],
+    "writes": [
+      "ingredient"
+    ],
+    "transaction": "要求版本和来源均 APPROVED；写事务"
+  },
+  {
+    "name": "关联规则与证据声明",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "POST /api/admin/knowledge/evidence-links",
+    "backend": [
+      "AdminRuleEvidenceServlet.doPost",
+      "RuleEvidenceServiceImpl.link",
+      "RuleEvidenceDaoImpl.insert"
+    ],
+    "reads": [
+      "flavor_rule",
+      "flavor_knowledge",
+      "evidence_claim"
+    ],
+    "writes": [
+      "rule_evidence"
+    ],
+    "transaction": "写事务；明确证据归属"
+  },
+  {
+    "name": "删除规则证据关联",
+    "page": "admin/knowledge/evidence.html",
+    "frontendMethod": "",
+    "apiFile": "admin-evidence-api.js",
+    "http": "DELETE /api/admin/knowledge/evidence-links/{id}",
+    "backend": [
+      "AdminRuleEvidenceServlet.doDelete",
+      "RuleEvidenceServiceImpl.unlink",
+      "RuleEvidenceDaoImpl.delete"
+    ],
+    "reads": [],
+    "writes": [
+      "rule_evidence"
+    ],
+    "transaction": "仅删除关联，不删除声明"
+  }
+]

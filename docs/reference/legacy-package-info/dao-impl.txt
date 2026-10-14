@@ -1,0 +1,6 @@
+/**
+ * JDBC 持久化实现：SQL 使用 snake_case 表/列，mapRow 转换为 camelCase Java 属性。通过 JdbcHelper 执行参数化查询与写入。表对应见 docs/源码索引.md。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.dao.impl;

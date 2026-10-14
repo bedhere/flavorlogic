@@ -1,0 +1,6 @@
+/**
+ * 跨层公共能力：数据库连接、JSON、业务异常、校验、Session、密码及受控文档获取。业务编排保留在 service 层。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.util;

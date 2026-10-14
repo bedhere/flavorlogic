@@ -1,0 +1,6 @@
+/**
+ * 持久化契约与 JdbcHelper：DAO 接收 Service 提供的 Connection；SQL 统一参数化，DAO 不提交或关闭传入连接。实现位于 impl 子包。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.dao;

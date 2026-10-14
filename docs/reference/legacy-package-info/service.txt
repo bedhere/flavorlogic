@@ -1,0 +1,6 @@
+/**
+ * 业务契约与公共编排：接口定义业务动作；Services 创建无状态实现；BaseService 管理连接与单次写事务。实现位于 impl 子包。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.service;

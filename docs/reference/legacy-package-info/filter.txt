@@ -1,0 +1,6 @@
+/**
+ * 请求过滤层：编码、安全响应头、登录状态与管理员权限。执行顺序和 URL 范围由 WEB-INF/web.xml 指定。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.filter;

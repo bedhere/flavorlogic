@@ -1,0 +1,6 @@
+/**
+ * 业务实现层：校验输入与数据归属，编排 DAO 与 engine。一次事务由 BaseService.write/writeVoid 控制，分析任务状态使用分阶段事务。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.service.impl;

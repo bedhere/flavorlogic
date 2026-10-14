@@ -1,0 +1,6 @@
+/**
+ * HTTP 接口层：以 @WebServlet 注册路由，读取参数与登录用户，调用 service.Services。统一响应与异常处理见 BaseServlet；本层不直接执行 SQL。
+ *
+ * <p>工程入口与答辩链路见 docs/工程规范.md 和 docs/答辩源码追踪.md。</p>
+ */
+package com.flavorlogic.servlet;
